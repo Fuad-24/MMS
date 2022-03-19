@@ -1,0 +1,50 @@
+#mms {
+  color: green;
+  font-size: 48px;
+}
+#Logo {
+  float: left;
+  width: 15%;
+}
+#title_bar {
+  width: 100;
+  border-bottom: 2px solid #aaa9a9;
+  height: 10vh;
+  padding: 10px;
+}
+#login {
+  background-color: green;
+  border-radius: 50px;
+  font-size: 24;
+  width: 158px;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+#signup {
+  font-size: 24;
+  border-radius: 50px;
+  width: 158px;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  color: #aaa9a9;
+  cursor: pointer;
+}
+#buttons {
+  display: flex;
+  float: right;
+  margin-right: 10px;
+}
+#signup:hover {
+  color: green;
+}
+#login:hover {
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+}
