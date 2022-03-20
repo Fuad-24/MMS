@@ -8,8 +8,8 @@ const TitleBar=()=>{
                 <div id="mms"><b>mms</b></div>
             </div>
             <div id="buttons">
-                <div id="signup"><b>Sign Up</b></div>
                 <div id="login"><b>Log In</b></div>
+                <div id="signup"><b>Sign Up</b></div>
             </div>
         </div>
     )

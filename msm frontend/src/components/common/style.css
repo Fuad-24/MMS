@@ -9,14 +9,14 @@
 #title_bar {
   width: 100;
   border-bottom: 2px solid #aaa9a9;
-  height: 10vh;
+  height: 72px;
   padding: 10px;
 }
-#login {
+#signup {
   background-color: green;
   border-radius: 50px;
   font-size: 24;
-  width: 158px;
+  width: 50%;
   text-align: center;
   padding: 20px;
   display: flex;
@@ -24,10 +24,10 @@
   color: white;
   cursor: pointer;
 }
-#signup {
+#login {
   font-size: 24;
   border-radius: 50px;
-  width: 158px;
+  width: 50%;
   text-align: center;
   padding: 20px;
   display: flex;
@@ -38,12 +38,13 @@
 #buttons {
   display: flex;
   float: right;
+  width: 25%;
   margin-right: 10px;
 }
-#signup:hover {
+#login:hover {
   color: green;
 }
-#login:hover {
+#signup:hover {
   color: green;
   background-color: white;
   border: 1px solid green;
