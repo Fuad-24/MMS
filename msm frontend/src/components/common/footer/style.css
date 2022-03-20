@@ -1,0 +1,12 @@
+#footer {
+  height: 72px;
+  display: flex;
+}
+#footertxt {
+  color: #808080;
+  margin: auto;
+}
+#sust {
+  color: green;
+  cursor: pointer;
+}
