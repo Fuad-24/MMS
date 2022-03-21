@@ -35,7 +35,7 @@ const LandingPage=()=>{
             <div id="whymms">
                     <div id="whymmstitle"><b>Why MMS?</b></div>
                     <div id="whymmstxt">
-                    Manush Lagbe.com has made to search for workers around you very easily and safely.
+                    Manush Lagbe.com has made to search for<br></br> workers around you very easily and safely.
                      Also finding jobs through MMS is easier. 
                     </div>
             </div>
