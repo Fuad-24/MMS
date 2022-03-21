@@ -11,7 +11,7 @@ const LandingPage=()=>{
 
     return(
         <div>
-            <TitleBar/>
+            <TitleBar page="landing"/>
             <img src="./pics_icons/landing.png" id="landing_img"></img>
             <div id="Manush_lagbe"><b>Mansuh Lagbe?</b></div>
             <div id="we_are_here">We are here for you</div>
@@ -35,8 +35,8 @@ const LandingPage=()=>{
             <div id="whymms">
                     <div id="whymmstitle"><b>Why MMS?</b></div>
                     <div id="whymmstxt">
-                        Manush Lagbe.com has made searching for workers around you very easy and safe.
-                        Also finding job is more easy thanks to MMS.
+                    Manush Lagbe.com has made to search for workers around you very easily and safely.
+                     Also finding jobs through MMS is easier. 
                     </div>
             </div>
             <Footer/>
