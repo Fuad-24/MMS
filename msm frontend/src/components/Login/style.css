@@ -7,7 +7,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 16px auto;
+  margin: 24px auto;
   padding-top: 32px;
 }
 #logintxt {
@@ -51,4 +51,8 @@ hr {
   color: green;
   border: 1px solid green;
   font-size: 22px;
+}
+#container {
+  display: flex;
+  flex-direction: column;
 }

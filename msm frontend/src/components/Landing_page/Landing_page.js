@@ -11,7 +11,7 @@ const LandingPage=()=>{
 
     return(
         <div>
-            <TitleBar page="landing"/>
+            <TitleBar page="landing" style={{"border-bottom":"0px solid white"}}/>
             <img src="./pics_icons/landing.png" id="landing_img"></img>
             <div id="Manush_lagbe"><b>Mansuh Lagbe?</b></div>
             <div id="we_are_here">We are here for you</div>

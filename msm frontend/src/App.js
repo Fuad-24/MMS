@@ -9,9 +9,9 @@ function App() {
     <div className="App">
       <div id="body">
         {
-        <LandingPage/>
+        //<LandingPage/>
         //<Login/>
-        //<ClientSearchPage/>
+        <ClientSearchPage/>
         }
       </div>
     </div>
