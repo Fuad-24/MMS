@@ -7,6 +7,7 @@ const showMenu=()=>{document.querySelector("#lgm").style.display="block"}
 
 const TitleBar=({page,style})=>{
     const[menuVis,setMenuVis]=useState(false);
+    
     let addLis=()=>{document.addEventListener('click', function(event) {
         var isClickInsideElement1 = document.querySelector("#lgm").contains(event.target);
         var isClickInsideElement2 = document.querySelector("#titlebarimg").contains(event.target);
@@ -14,6 +15,7 @@ const TitleBar=({page,style})=>{
             setMenuVis(false);
         }
     });}
+
     addLis();
 
     useEffect(()=>{
