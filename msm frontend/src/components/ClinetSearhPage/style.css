@@ -10,10 +10,11 @@ hr {
 }
 input {
   border: 0px;
-  font-size: 18px;
+  font-size: 24px;
   width: 100%;
   border-radius: 10px;
   margin-right: 18px;
+  outline: none;
 }
 #searchdiv {
   height: 74vh;
@@ -73,4 +74,9 @@ input {
 }
 .select {
   border: white;
+}
+@media (max-width: 700px) {
+  #service {
+    font-size: 18px;
+  }
 }
