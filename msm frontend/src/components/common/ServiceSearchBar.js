@@ -42,7 +42,7 @@ const ServiceSearchBar=({setService})=>{
     return(
         <div>
             <div class="inputboxcontaier">
-            <div class="input"><input id="service" onKeyUp={ontype} placeholder="What needs to be done"/><img class="inputicon" src="./pics_icons/search.png"/></div>
+            <div class="input"><input id="service" onChange={ontype} placeholder="What needs to be done"/><img class="inputicon" src="./pics_icons/search.png"/></div>
             </div>
             <div class="resultwrapper" id="serviceresult"></div>
         </div>
