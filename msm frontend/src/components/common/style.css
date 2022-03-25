@@ -57,6 +57,7 @@
   border-radius: 100px;
   float: right;
   cursor: pointer;
+  margin-right: 8px;
 }
 #titlebarimg:hover {
   border: 2px solid green;
@@ -93,6 +94,9 @@
 @media (max-width: 600px) {
   .tab {
     font-size: 14px;
+  }
+  #titlebarimg {
+    margin-right: 0px;
   }
 }
 #lgm {
