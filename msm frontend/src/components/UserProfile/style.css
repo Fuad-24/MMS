@@ -61,9 +61,7 @@
   font-size: 24px;
   margin: 8px;
 }
-#buttondiv {
-  width: 20%;
-}
+
 .pointer {
   cursor: pointer;
 }
@@ -79,6 +77,24 @@
 }
 .infoediticon {
   width: 36px;
+}
+#buttondiv {
+  min-width: 20%;
+  display: flex;
+}
+#profilehirebtn {
+  color: white;
+  background-color: green;
+  padding: 8px;
+  border: 2px solid green;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  margin: auto;
+}
+#profilehirebtn:hover {
+  color: green;
+  background-color: white;
 }
 #educationinstitute {
   font-size: 18px;

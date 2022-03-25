@@ -63,7 +63,9 @@ import "./style.css"
                             <img id="phonenoediticon" src="./pics_icons/edit.png" class="pointer"/>
                         </div>
                     </div>
-                    <div id="buttondiv"></div>
+                    <div id="buttondiv">
+                        <div id="profilehirebtn" class="pointer">Hire Now</div>
+                    </div>
                 </div>
                 <div id="educationdiv" class="userinfo">
                     <div class="infotitle">
