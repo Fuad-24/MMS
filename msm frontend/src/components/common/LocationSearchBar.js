@@ -7,7 +7,7 @@ const LocationSearchBar=({setPosition})=>{
     let searchLocation=(e)=>{
         //console.log(e.target.value);
         let query=e.target.value;
-        if(query.length%5!=1)
+        if(query.length%6===1)
             return;
         axios.get(`http://api.positionstack.com/v1/forward?access_key=e908e8dad7e3e1d2c67cc912fd54ae2b&query=${query}`)
             .then(function (response) {
@@ -62,7 +62,7 @@ const LocationSearchBar=({setPosition})=>{
     return(
         <div>
             <div class="inputboxcontaier">
-            <div class="input"><input onKeyUp={searchLocation} placeholder="Set Location" id="location"/><img class="inputicon" src="./pics_icons//location.png"/></div>
+            <div class="input"><input onChange={searchLocation} placeholder="Set Location" id="location"/><img class="inputicon" src="./pics_icons//location.png"/></div>
             </div>
             <div class="resultwrapper" id="locationresult"></div>
         </div>

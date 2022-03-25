@@ -12,8 +12,8 @@ function App() {
         {
         //<LandingPage/>
         //<Login/>
-        //<ClientSearchPage/>
-        <UserProfile/>
+        <ClientSearchPage/>
+        //<UserProfile/>
         }
       </div>
     </div>
