@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const ServiceSearchBar=({setService})=>{
+const ServiceSearchBar=({setService,service})=>{
     let services=["Cleaning","RcikshawPulling","Hawkering","Caretalomg","Helping"]
 
     let ontype=(e)=>{
@@ -9,13 +9,14 @@ const ServiceSearchBar=({setService})=>{
     }
     let selectService=(service)=>{
     document.querySelector("#service").value=service
-    clearresult("#serviceresult");
     setService(service);
+    clearresult("#serviceresult");
     }
     
     let clearresult=(id)=>{
         let resultdiv=document.querySelector(id);
         resultdiv.innerHTML="";
+        document.querySelector("#service").value=service;
     }
     
     let addDataToDiv=(value,id)=>{
@@ -23,8 +24,8 @@ const ServiceSearchBar=({setService})=>{
         resultdiv.innerHTML="";
         let search=value;
         let tempresults=services.filter(result=>result.toLowerCase().includes(search.toLowerCase()))
-        if(search==="")
-            tempresults=[];
+        if(search===""&&false);
+            //tempresults=[];
         tempresults.map(result=>{
             resultdiv.innerHTML+=`<div class="li" id=${result}>${result}</div>`
         })
@@ -33,7 +34,9 @@ const ServiceSearchBar=({setService})=>{
     
     let addServiceBarOutsideClickListener=()=>{document.addEventListener('click', function(event) {
         var isClickInsideElement = document.querySelector("#serviceresult").contains(event.target);
-        if (!isClickInsideElement) {
+        var isClickInsideElement2 = document.querySelector("#service").contains(event.target);
+        
+        if (!isClickInsideElement&&!isClickInsideElement2) {
             clearresult("#serviceresult")
         }
     });}

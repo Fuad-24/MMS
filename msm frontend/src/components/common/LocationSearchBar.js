@@ -2,13 +2,16 @@ import React from "react";
 import axios from 'axios';
 
 
-const LocationSearchBar=({setPosition})=>{
+const LocationSearchBar=({setPosition,position})=>{
     
     let searchLocation=(e)=>{
         //console.log(e.target.value);
+        //setPosition(null)
         let query=e.target.value;
         if(query.length%6===1)
             return;
+        if(query.length===0)
+            setPosition(null);
         axios.get(`http://api.positionstack.com/v1/forward?access_key=e908e8dad7e3e1d2c67cc912fd54ae2b&query=${query}`)
             .then(function (response) {
             //console.log(response.data);
@@ -33,7 +36,7 @@ const LocationSearchBar=({setPosition})=>{
         console.log(tempresults)
         resultdiv.innerHTML="";
         if(query==="")
-            tempresults=[];
+            {tempresults=[];}
         let i=0;
         tempresults.map(result=>{
             resultdiv.innerHTML+=`<div class="li" id=id${i}>${result.label}</div>`
@@ -49,10 +52,13 @@ const LocationSearchBar=({setPosition})=>{
     let clearresult=(id)=>{
         let resultdiv=document.querySelector(id);
         resultdiv.innerHTML="";
+        document.querySelector("#location").value=position?position.location:null;
     }
     let addLocationBarOutSideClikcListener=()=>{document.addEventListener('click', function(event) {
         const isClickInsideElement = document.querySelector("#locationresult").contains(event.target);
-        if (!isClickInsideElement) {
+        const isClickInsideElement2 = document.querySelector("#location").contains(event.target);
+        
+        if (!isClickInsideElement&&!isClickInsideElement2) {
             clearresult("#locationresult")
         }
     });}

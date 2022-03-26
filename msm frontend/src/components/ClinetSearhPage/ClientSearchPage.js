@@ -19,8 +19,8 @@ const ClinetSearhPage=()=>{
             <Title_bar page="clientPage"/>
             <div id="searchdiv">
                 <div id="inputfields">
-                    <LocationSearchBar setPosition={setPosition}/>
-                    <ServiceSearchBar setService={setService}/>
+                    <LocationSearchBar setPosition={setPosition} position={position}/>
+                    <ServiceSearchBar setService={setService} service={service}/>
                     <div id="searchbutton" onClick={Search}>Search</div>
                 </div>
             </div>
