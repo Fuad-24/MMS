@@ -6,6 +6,7 @@ import "./style.css"
 import UserNameModal from './Modals/UserNameModal'
 import UserLocationModal from "./Modals/UserLocationModal";
 import UserPhoneModal from "./Modals/UserPhoneModal";
+import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
 
  const UserProfile=()=>{
     let profilepic="./pics_icons/profilepic.jpg"
@@ -39,8 +40,7 @@ import UserPhoneModal from "./Modals/UserPhoneModal";
     let showSetNameModal=()=>{document.querySelector("#setNameModal").style.display="block"}
     let showSetLocationModal=()=>{document.querySelector("#setLocationModal").style.display="block"}
     let showSetPhoneModal=()=>{document.querySelector("#setPhoneModal").style.display="block"}
-
-
+    let showSetProfilePicModal=()=>{document.querySelector("#setProfilePicModal").style.display="block";}
     return(
         <div id="container">
             <TitleBar page="clientPage"/>
@@ -49,7 +49,7 @@ import UserPhoneModal from "./Modals/UserPhoneModal";
                     <div id="profilepicdiv">
                         <img src={profilepic} id="profilepic"/>
                         <div id="profilepicedit" class="pointer">
-                            <img id="profilepiceditimg" src="./pics_icons/camera.png"/>
+                            <img onClick={showSetProfilePicModal} id="profilepiceditimg" src="./pics_icons/camera.png"/>
                         </div>
                     </div>
                     <div id="basicinfotxt">
@@ -117,6 +117,7 @@ import UserPhoneModal from "./Modals/UserPhoneModal";
             <UserNameModal/>
             <UserLocationModal/>
             <UserPhoneModal />
+            <ProfilePicUploadModal />
         </div>
     )
  }

@@ -29,6 +29,9 @@
 .ModalCloseContaier {
   width: 100;
   height: 45px;
+  font-size: 36px;
+  text-align: left;
+  color:#a9a9a9;
 }
 #ModalNameField, #ModalPhoneField{
   padding: 8px;
@@ -59,3 +62,38 @@
 .inputboxcontaier{
   width: 90%;
 }
+#UserProfilePicUploadButton{
+position: absolute;
+padding: 16px;
+top: 180px;
+left: 190px;
+}
+#priofilepicuplodcontainer{
+  margin:auto;
+  width:570px;
+  height:300px
+}
+#selectedImage{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  margin: 16px auto;
+}
+#UploadButton{
+width: fit-content;
+margin: 16px auto;
+}
+.u2{
+  display: none;
+}
+@media(max-width:700px) {
+  #UserProfilePicUploadButton{
+    top: 200px;
+    left: 120px;
+  }
+  #priofilepicuplodcontainer{
+    width:400px;
+  }
+
+}
+
