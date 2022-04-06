@@ -3,6 +3,9 @@ import Footer from "../common/footer/Footer";
 import TitleBar from "../common/Title_bar";
 import Rating from "./Rating";
 import "./style.css"
+import UserNameModal from './Modals/UserNameModal'
+import UserLocationModal from "./Modals/UserLocationModal";
+import UserPhoneModal from "./Modals/UserPhoneModal";
 
  const UserProfile=()=>{
     let profilepic="./pics_icons/profilepic.jpg"
@@ -33,6 +36,10 @@ import "./style.css"
         {client:"Fuad",worker:"Tithi",rating:"2",description:"Had fun wok with blah blah... .... ...",tag:"Shopping"}
     ]
 
+    let showSetNameModal=()=>{document.querySelector("#setNameModal").style.display="block"}
+    let showSetLocationModal=()=>{document.querySelector("#setLocationModal").style.display="block"}
+    let showSetPhoneModal=()=>{document.querySelector("#setPhoneModal").style.display="block"}
+
 
     return(
         <div id="container">
@@ -48,19 +55,19 @@ import "./style.css"
                     <div id="basicinfotxt">
                         <div id="username">
                             {name}
-                            <img id="nameediticon" src="./pics_icons/edit.png" class="pointer"/>
+                            <img id="nameediticon" src="./pics_icons/edit.png" onClick={showSetNameModal} class="pointer"/>
                         </div>
                         
                         <div id="location">
                             <img id="locaionicon" src="./pics_icons/location.png"/>
                             {location}
-                            <img id="locationediticon" src="./pics_icons/edit.png" class="pointer"/>
+                            <img id="locationediticon" src="./pics_icons/edit.png" class="pointer" onClick={showSetLocationModal}/>
                         </div>
                         
                         <div id="phoneno">
                             <img id="phoneicon" src="./pics_icons/phone-callg.png"/>
                             {phoneno}
-                            <img id="phonenoediticon" src="./pics_icons/edit.png" class="pointer"/>
+                            <img id="phonenoediticon" src="./pics_icons/edit.png" class="pointer" onClick={showSetPhoneModal}/>
                         </div>
                     </div>
                     <div id="buttondiv">
@@ -107,6 +114,9 @@ import "./style.css"
                 </div>
             </div>
             <Footer/>
+            <UserNameModal/>
+            <UserLocationModal/>
+            <UserPhoneModal />
         </div>
     )
  }
