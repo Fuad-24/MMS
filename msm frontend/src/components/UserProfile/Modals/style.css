@@ -86,6 +86,60 @@ margin: 16px auto;
 .u2{
   display: none;
 }
+.service_modal_list_charge{
+margin-left: auto;
+color: #a9a9a9;
+font-size: 24px;
+}
+.service_modal_list_name{
+font-size: 24px;
+font-weight: bold;
+}
+.servcieModlaListItem{
+width: 360px;
+display: flex;
+border: 1px solid gray;
+border-radius: 10px;
+margin-bottom: 16px;
+padding:16px;
+box-shadow: 0px 3px 0px #a9a9a9;
+cursor: pointer;
+}
+.servcieModlaListItem:hover{
+  border-color: green;
+  color: green;
+}
+.servcieModlaListItem:hover .service_modal_list_charge{
+  color: green;
+}
+.EducaionModalListItem{
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 3px 0px #a9a9a9;
+  margin-top: 16px;
+  padding: 8px;
+
+}
+.EducaionItemTextContainer{
+  margin-right: 8px;
+}
+#educaionEditContainer{
+  width: 400px;
+  padding-left: 16px;
+}
+.educationinputbox{
+  border: 2px solid #a9a9a9;
+  margin-bottom: 8px;
+  padding: 8px;
+  max-width: 360px;
+}
+.HW{
+  width: 49%;
+}
+.flex{
+  display: flex;
+}
+
 @media(max-width:700px) {
   #UserProfilePicUploadButton{
     top: 200px;

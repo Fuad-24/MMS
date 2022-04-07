@@ -29,7 +29,7 @@ const ProfilePicUploadModal=()=>{
     }
     return(
     <div class="ModalBody" id="setProfilePicModal">
-    <div class="ModalContainer" id="profilePicModalContainer">
+    <div class="ModalContainer" style={{margin:"20vh auto"}} id="profilePicModalContainer">
         <div class="ModalCloseContaier" style={{borderBottom:"2px solid #a9a9a9",padding:"16px 0px"}}>
             Update profile picture
             <img class ="ModalCloseButton" src="./pics_icons/cancel.png" onClick={hideSetProfilePicModal}/>

@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Footer from "../common/footer/Footer";
 import TitleBar from "../common/Title_bar";
 import Rating from "./Rating";
@@ -7,27 +7,30 @@ import UserNameModal from './Modals/UserNameModal'
 import UserLocationModal from "./Modals/UserLocationModal";
 import UserPhoneModal from "./Modals/UserPhoneModal";
 import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
+import HireNowModal from "./Modals/HireNowModal";
+import EducaionModal from "./Modals/EducationModal";
+import CreateEditEducationModal from "./Modals/CreateEditEducationModal";
 
  const UserProfile=()=>{
     let profilepic="./pics_icons/profilepic.jpg"
     let name="Tithi Saha"
     let location="Madina market, Sylhet, Bangladesh"
     let phoneno="01751327692"
-    let Educations=[{InstitueName:"Shajalal University of Science And Technology,Sylhet",
+    const [Educations,setEducations]=useState([{InstituteName:"Notre Dame College, Dhaka",
                     StartingYear:"2018",
                     EndingYear:"2022",
-                    Subject:"CSE"
+                    Degree:"HSC",id:1
                     },
-                    {InstitueName:"Shajalal University of Science And Technology,Sylhet",
+                    {InstituteName:"Shajalal University of Science And Technology,Sylhet",
                     StartingYear:"2018",
                     EndingYear:"2022",
-                    Subject:"CSE"
+                    Degree:"BSC",id:2
                     }
-                ];
+                ]);
     let Services=[
-        {"Name":"Shopping","Charge":"24 Tk/hr"},
-        {"Name":"Teaching","Charge":"200 Tk/hr"},
-        {"Name":"cooking","Charge":"200 Tk/hr"}
+        {"Name":"Shopping","Charge":"24 Tk/hr","id":1},
+        {"Name":"Teaching","Charge":"200 Tk/hr","id":2},
+        {"Name":"cooking","Charge":"200 Tk/hr","id":3}
     ]
 
     let works=[
@@ -41,6 +44,9 @@ import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
     let showSetLocationModal=()=>{document.querySelector("#setLocationModal").style.display="block"}
     let showSetPhoneModal=()=>{document.querySelector("#setPhoneModal").style.display="block"}
     let showSetProfilePicModal=()=>{document.querySelector("#setProfilePicModal").style.display="block";}
+    let showHireNowModal=()=>{document.querySelector("#hireNowModal").style.display="block";}
+    let showEducaionModal=()=>{document.querySelector("#educationModal").style.display="block";}
+    
     return(
         <div id="container">
             <TitleBar page="clientPage"/>
@@ -71,17 +77,17 @@ import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
                         </div>
                     </div>
                     <div id="buttondiv">
-                        <div id="profilehirebtn" class="pointer">Hire Now</div>
+                        <div id="profilehirebtn" class="pointer" onClick={showHireNowModal}>Hire Now</div>
                     </div>
                 </div>
                 <div id="educationdiv" class="userinfo">
                     <div class="infotitle">
-                        Education<img id="educationediticon" class="infoediticon pointer" src="./pics_icons/edit.png"/>
+                        Education<img id="educationediticon" class="infoediticon pointer" src="./pics_icons/edit.png" onClick={showEducaionModal}/>
                     </div>
                     <div id="educationlist">
                         {Educations.map(Education=>(
                             <div class="educationlistitem">
-                            <div id="educationinstitute">{Education.InstitueName}</div>
+                            <div id="educationinstitute">{Education.InstituteName}</div>
                             <div id="educationyear">{Education.StartingYear}-{Education.EndingYear}</div>
                             </div>
                         ))}
@@ -118,6 +124,9 @@ import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
             <UserLocationModal/>
             <UserPhoneModal />
             <ProfilePicUploadModal />
+            <HireNowModal services={Services}/>
+            <EducaionModal Educations={Educations} setEducations={setEducations}/>
+            <CreateEditEducationModal/>
         </div>
     )
  }
