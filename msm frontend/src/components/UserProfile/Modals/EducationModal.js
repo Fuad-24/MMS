@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css'
+import CreateEditEducationModal from "./CreateEditEducationModal";
 
 const EducaionModal=({Educations,setEducaions})=>{
     let hideEducaionModal=()=>{
@@ -10,8 +11,9 @@ const EducaionModal=({Educations,setEducaions})=>{
         hideEducaionModal();
     }
     return(
-    <div class="ModalBody" id="educationModal" style={{display:"none"}}>
-    <div class="ModalContainer" id="educaionModalContainer">
+    <div>
+    <div class="ModalBody" id="educationModal" >
+    <div class="ModalContainer" id="educaionModalContainer" style={{margin:"20vh auto"}} >
         <div class="ModalCloseContaier">
             <img class ="ModalCloseButton" src="./pics_icons/cancel.png" onClick={hideEducaionModal}/>
         </div>
@@ -33,6 +35,8 @@ const EducaionModal=({Educations,setEducaions})=>{
             </div>
         </div>
     </div>
+    </div>
+    <CreateEditEducationModal />
     </div>
     )
 }

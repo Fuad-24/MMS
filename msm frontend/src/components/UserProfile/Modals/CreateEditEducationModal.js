@@ -1,5 +1,4 @@
 import React from "react";
-import LocationSearchBar from "../../common/LocationSearchBar";
 import './style.css'
 
 const CreateEditEducationModal=()=>{

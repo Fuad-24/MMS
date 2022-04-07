@@ -10,7 +10,7 @@ const HireNowModal=({services})=>{
     console.log(services);
     return(
     <div class="ModalBody" id="hireNowModal">
-    <div class="ModalContainer" id="hireModalContainer">
+    <div class="ModalContainer" id="hireModalContainer" style={{margin:"20vh auto"}}>
         <div class="ModalCloseContaier">
             <img class ="ModalCloseButton" src="./pics_icons/cancel.png" onClick={hideHireModal}/>
         </div>

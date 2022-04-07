@@ -9,7 +9,7 @@ import UserPhoneModal from "./Modals/UserPhoneModal";
 import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
 import HireNowModal from "./Modals/HireNowModal";
 import EducaionModal from "./Modals/EducationModal";
-import CreateEditEducationModal from "./Modals/CreateEditEducationModal";
+import ServiceModal from "./Modals/ServiceModal";
 
  const UserProfile=()=>{
     let profilepic="./pics_icons/profilepic.jpg"
@@ -27,11 +27,11 @@ import CreateEditEducationModal from "./Modals/CreateEditEducationModal";
                     Degree:"BSC",id:2
                     }
                 ]);
-    let Services=[
+    const [Services,setServices]=useState([
         {"Name":"Shopping","Charge":"24 Tk/hr","id":1},
         {"Name":"Teaching","Charge":"200 Tk/hr","id":2},
         {"Name":"cooking","Charge":"200 Tk/hr","id":3}
-    ]
+    ])
 
     let works=[
         {client:"Fuad",worker:"Tithi",rating:"2",description:"Had fun wok with blah blah... .... ...",tag:"Shopping"},
@@ -46,6 +46,7 @@ import CreateEditEducationModal from "./Modals/CreateEditEducationModal";
     let showSetProfilePicModal=()=>{document.querySelector("#setProfilePicModal").style.display="block";}
     let showHireNowModal=()=>{document.querySelector("#hireNowModal").style.display="block";}
     let showEducaionModal=()=>{document.querySelector("#educationModal").style.display="block";}
+    let showServiceModal=()=>{document.querySelector("#serviceModal").style.display="block";}
     
     return(
         <div id="container">
@@ -95,7 +96,7 @@ import CreateEditEducationModal from "./Modals/CreateEditEducationModal";
                 </div>
                 <div id="servicesdiv" class="userinfo">
                     <div class="infotitle">
-                        Services <img id="serviceediticon" class="infoediticon pointer" src="./pics_icons/edit.png"/>
+                        Services <img id="serviceediticon" class="infoediticon pointer" src="./pics_icons/edit.png" onClick={showServiceModal}/>
                     </div>
                     <div id="profileservicelist">
                         {Services.map(Service=>(
@@ -126,7 +127,7 @@ import CreateEditEducationModal from "./Modals/CreateEditEducationModal";
             <ProfilePicUploadModal />
             <HireNowModal services={Services}/>
             <EducaionModal Educations={Educations} setEducations={setEducations}/>
-            <CreateEditEducationModal/>
+            <ServiceModal Services={Services} setServices={setServices}/>
         </div>
     )
  }
