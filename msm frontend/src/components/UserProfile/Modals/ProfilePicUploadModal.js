@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import LocationSearchBar from "../../common/LocationSearchBar";
 import './style.css'
 
-const ProfilePicUploadModal=()=>{
-    const [selectedImage,setSelectedImage]=useState('./pics_icons/profilepic.jpg');
+const ProfilePicUploadModal=({profilePic,setProfilePic})=>{
+    const [selectedImage,setSelectedImage]=useState(null);
     let selectImage=(e)=>{
         const file=e.target.files[0];
         console.log(e.target.files)
@@ -27,6 +27,11 @@ const ProfilePicUploadModal=()=>{
         document.querySelector("#UserProfilePicUploadButton").style.display="block";
         document.querySelector("#setProfilePicModal").style.display="none";
     }
+    const makeProfilePic=()=>{
+        if(selectedImage)
+            setProfilePic(selectedImage)
+        hideSetProfilePicModal();
+    }
     return(
     <div class="ModalBody" id="setProfilePicModal">
     <div class="ModalContainer" style={{margin:"20vh auto"}} id="profilePicModalContainer">
@@ -38,7 +43,7 @@ const ProfilePicUploadModal=()=>{
         <label for="upload" className="Button" id="UserProfilePicUploadButton">Upload Picture</label>
         <input type="file" id="upload" onChange={selectImage} accept="image/*" hidden/>
         <img className="u2" alt="Image not selected" src={selectedImage} id="selectedImage"/>
-        <div className="Button u2" id="UploadButton">Make Profile Picture</div>
+        <div className="Button u2" id="UploadButton" onClick={makeProfilePic}>Make Profile Picture</div>
         </div>
     </div>
     </div>

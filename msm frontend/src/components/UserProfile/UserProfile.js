@@ -12,10 +12,10 @@ import EducaionModal from "./Modals/EducationModal";
 import ServiceModal from "./Modals/ServiceModal";
 
  const UserProfile=()=>{
-    let profilepic="./pics_icons/profilepic.jpg"
-    let name="Tithi Saha"
-    let location="Madina market, Sylhet, Bangladesh"
-    let phoneno="01751327692"
+    const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
+    const [name,setName]=useState("Tithi Saha")
+    const [location,setLoction]=useState("Madina market, Sylhet, Bangladesh")
+    const [phoneno,setPhoneNo]=useState("01751327692")
     const [Educations,setEducations]=useState([{InstituteName:"Notre Dame College, Dhaka",
                     StartingYear:"2018",
                     EndingYear:"2022",
@@ -121,10 +121,10 @@ import ServiceModal from "./Modals/ServiceModal";
                 </div>
             </div>
             <Footer/>
-            <UserNameModal/>
+            <UserNameModal name={name} setName={setName}/>
             <UserLocationModal/>
-            <UserPhoneModal />
-            <ProfilePicUploadModal />
+            <UserPhoneModal phoneNo={phoneno} setPhoneNo={setPhoneNo}/>
+            <ProfilePicUploadModal profilePic={profilepic} setProfilePic={setProfilePic}/>
             <HireNowModal services={Services}/>
             <EducaionModal Educations={Educations} setEducations={setEducations}/>
             <ServiceModal Services={Services} setServices={setServices}/>

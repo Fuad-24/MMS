@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 const ServiceSearchBar=({setService,service})=>{
     let services=["Cleaning","RcikshawPulling","Hawkering","Caretalomg","Helping"]
-
+    useEffect(()=>selectService(service),[service])
     let ontype=(e)=>{
         addDataToDiv(e.target.value,"#serviceresult");
     }
