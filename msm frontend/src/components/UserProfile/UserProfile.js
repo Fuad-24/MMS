@@ -14,7 +14,7 @@ import ServiceModal from "./Modals/ServiceModal";
  const UserProfile=()=>{
     const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
     const [name,setName]=useState("Tithi Saha")
-    const [location,setLoction]=useState("Madina market, Sylhet, Bangladesh")
+    const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
     const [phoneno,setPhoneNo]=useState("01751327692")
     const [Educations,setEducations]=useState([{InstituteName:"Notre Dame College, Dhaka",
                     StartingYear:"2018",
@@ -65,9 +65,9 @@ import ServiceModal from "./Modals/ServiceModal";
                             <img id="nameediticon" src="./pics_icons/edit.png" onClick={showSetNameModal} class="pointer"/>
                         </div>
                         
-                        <div id="location">
+                        <div id="Profilelocation">
                             <img id="locaionicon" src="./pics_icons/location.png"/>
-                            {location}
+                            {location.location}
                             <img id="locationediticon" src="./pics_icons/edit.png" class="pointer" onClick={showSetLocationModal}/>
                         </div>
                         
@@ -89,7 +89,7 @@ import ServiceModal from "./Modals/ServiceModal";
                         {Educations.map(Education=>(
                             <div class="educationlistitem">
                             <div id="educationinstitute">{Education.InstituteName}</div>
-                            <div id="educationyear">{Education.StartingYear}-{Education.EndingYear}</div>
+                            <div id="educationyear"><b>{Education.Degree}</b> {Education.StartingYear}-{Education.EndingYear}</div>
                             </div>
                         ))}
                     </div>
@@ -122,7 +122,7 @@ import ServiceModal from "./Modals/ServiceModal";
             </div>
             <Footer/>
             <UserNameModal name={name} setName={setName}/>
-            <UserLocationModal/>
+            <UserLocationModal setLocation={setLocation}/>
             <UserPhoneModal phoneNo={phoneno} setPhoneNo={setPhoneNo}/>
             <ProfilePicUploadModal profilePic={profilepic} setProfilePic={setProfilePic}/>
             <HireNowModal services={Services}/>

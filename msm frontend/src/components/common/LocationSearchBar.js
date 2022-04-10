@@ -39,7 +39,7 @@ const LocationSearchBar=({setPosition,position})=>{
             {tempresults=[];}
         let i=0;
         tempresults.map(result=>{
-            resultdiv.innerHTML+=`<div class="li" id=id${i}>${result.label}</div>`
+            resultdiv.innerHTML+=`<div class="li" id="id${i}">${result.label}</div>`
             i=i+1;
         })
         i=0;

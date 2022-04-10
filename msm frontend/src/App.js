@@ -12,7 +12,7 @@ function App() {
         {
         //<LandingPage/>
         //<Login/>
-        //<ClientSearchPage/>
+       // <ClientSearchPage/>
         <UserProfile/>
         }
       </div>
