@@ -7,6 +7,7 @@ const sql = require('./sql')
 const {workerSignUpHandler,getWorkers,getWorker,updateWorker}=require('./src/worker_Handler')
 const {clientSignUpHandler,getClients,getClient,updateClient}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
+const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService}=require('./src/workService_Handler')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -45,6 +46,11 @@ app.get('/education',(req,res)=>getEducations(res,req.query.email))
 app.post('/education',(req,res)=>createEducation(res,req.body))
 app.patch('/education',(req,res)=>updateEducation(res,req.body))
 app.delete('/education',(req,res)=>deletEducation(res,req.query.email,req.query.degree))
+
+app.get('/workerservice',(req,res)=>getWorkerServices(res,req.query.email))
+app.post('/workerservice',(req,res)=>createWorkerService(res,req.body))
+app.patch('/workerservice',(req,res)=>updateWorkerService(res,req.body))
+app.delete('/workerservice',(req,res)=>deletWorkerService(res,req.query.email,req.query.service_name))
 
 
 
