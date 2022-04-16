@@ -5,6 +5,7 @@ import LandingPage from './components/Landing_page/Landing_page';
 import ClientSearchPage from  './components/ClinetSearhPage/ClientSearchPage'
 import Login from './components/Login/Login'
 import UserProfile from './components/UserProfile/UserProfile'
+import Demo from './components/common/Demo';
 function App() {
   return (
     <div className="App">
@@ -13,7 +14,8 @@ function App() {
         //<LandingPage/>
         //<Login/>
        // <ClientSearchPage/>
-        <UserProfile/>
+        //<UserProfile/>
+        <Demo />
         }
       </div>
     </div>
