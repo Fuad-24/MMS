@@ -8,6 +8,7 @@ const {workerSignUpHandler,getWorkers,getWorker,updateWorker}=require('./src/wor
 const {clientSignUpHandler,getClients,getClient,updateClient}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService}=require('./src/workService_Handler')
+const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}=require('./src/serviceRequest_Handler')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -51,6 +52,14 @@ app.get('/workerservice',(req,res)=>getWorkerServices(res,req.query.email))
 app.post('/workerservice',(req,res)=>createWorkerService(res,req.body))
 app.patch('/workerservice',(req,res)=>updateWorkerService(res,req.body))
 app.delete('/workerservice',(req,res)=>deletWorkerService(res,req.query.email,req.query.service_name))
+
+app.get('/servicerequest',(req,res)=>getServiceRequests(res,req.query.email))
+app.post('/servicerequest',(req,res)=>createServiceRequest(res,req.body))
+app.patch('/servicerequest',(req,res)=>updateServiceRequest(res,req.body))
+app.delete('/servicerequest',(req,res)=>deletServiceRequest(
+  res,req.query.location,req.query.status,req.query.client_email,
+  req.query.worker_email,req.query.service_name,req.query.start_time)) 
+app.put('/servicerequest',(req,res)=>updateServiceRequestStartTime(res,req.body))
 
 
 

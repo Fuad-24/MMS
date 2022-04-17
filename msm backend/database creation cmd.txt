@@ -1,5 +1,9 @@
+-->ubuntu
 sudo mysql -u root
+-->ubuntu
+
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MMS@tithi@fuad@126@24';
+
 CREATE DATABASE mms;
 SHOW DATABASES;
 use mms;
@@ -46,4 +50,20 @@ charge DECIMAL(10,5),
 PRIMARY KEY (email,service_name),
 FOREIGN KEY (email) REFERENCES Worker(email) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (service_name) REFERENCES Service(service_name) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE ServiceRequest(
+start_time VARCHAR(100) DEFAULT "N/A",
+end_time VARCHAR(100),
+review TEXT,
+rating DECIMAL(2,1),
+location VARCHAR(100),
+status VARCHAR(100),
+client_email VARCHAR(100),
+worker_email VARCHAR(100),
+service_name VARCHAR(100),
+PRIMARY KEY (start_time,location,status,client_email,worker_email,service_name),
+FOREIGN KEY (client_email) REFERENCES Client(email),
+FOREIGN KEY (worker_email) REFERENCES Worker(email),
+FOREIGN KEY (service_name) REFERENCES Service(service_name)
 );

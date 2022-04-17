@@ -1,3 +1,4 @@
+const { DATE } = require('mysql/lib/protocol/constants/types')
 const {con}=require('../sql')
 
 const createEducation=(res,payload)=>{
