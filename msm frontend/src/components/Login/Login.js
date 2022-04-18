@@ -9,7 +9,10 @@ const setLocalStorage=(data)=>{
     localStorage.setItem("type", data.type);
     localStorage.setItem("email", data.user.email);
     localStorage.setItem("name", data.user.name);
-    localStorage.setItem("profile_pic", data.user.profile_pic);
+    if(data.user.profile_pic)
+        localStorage.setItem("profile_pic", data.user.profile_pic);
+    else
+        localStorage.setItem("profile_pic","./pics_icons/alter.png")
     localStorage.setItem("phone_no", data.user.phone_no);
     localStorage.setItem("active_status", data.user.active_status);
     localStorage.setItem("location_name", data.user.location_name);

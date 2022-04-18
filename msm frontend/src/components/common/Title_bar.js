@@ -52,7 +52,7 @@ const TitleBar=({page,style})=>{
                 <a href="" class="tab">find workers</a>
                 <a href="" class="tab">my hires</a>
             </div>
-            <img src="./pics_icons/profilepic.jpg" id="titlebarimg" onClick={titleImgClick}/>
+            <img src={localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
         </div>
         <LogoutMenu setMenuVis={setMenuVis}/>

@@ -19,8 +19,8 @@ const HireNowModal=({services})=>{
                 <div class="servcieModlaListItem" onClick={()=>{
                     requeForService(service.id);
                 }}>
-                    <span class="service_modal_list_name">{service.Name}</span>
-                    <span class="service_modal_list_charge">{service.Charge}</span>
+                    <span class="service_modal_list_name">{service.service_name}</span>
+                    <span class="service_modal_list_charge">{`${service.charge} Tk/hr`}</span>
                 </div>
                 ))}
         </div>

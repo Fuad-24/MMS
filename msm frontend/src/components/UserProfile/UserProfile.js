@@ -10,35 +10,36 @@ import ProfilePicUploadModal from "./Modals/ProfilePicUploadModal"
 import HireNowModal from "./Modals/HireNowModal";
 import EducaionModal from "./Modals/EducationModal";
 import ServiceModal from "./Modals/ServiceModal";
+import axios from "axios";
 
  const UserProfile=()=>{
     const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
     const [name,setName]=useState("Tithi Saha")
     const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
     const [phoneno,setPhoneNo]=useState("01751327692")
-    const [Educations,setEducations]=useState([{InstituteName:"Notre Dame College, Dhaka",
-                    StartingYear:"2018",
-                    EndingYear:"2022",
-                    Degree:"HSC",id:1
+    const [Educations,setEducations]=useState([{institute:"Notre Dame College, Dhaka",
+                    starting_year:"2018",
+                    ending_year:"2022",
+                    degree:"HSC",id:1
                     },
-                    {InstituteName:"Shajalal University of Science And Technology,Sylhet",
-                    StartingYear:"2018",
-                    EndingYear:"2022",
-                    Degree:"BSC",id:2
+                    {institute:"Shajalal University of Science And Technology,Sylhet",
+                    starting_year:"2018",
+                    ending_year:"2022",
+                    degree:"BSC",id:2
                     }
                 ]);
     const [Services,setServices]=useState([
-        {"Name":"Shopping","Charge":"24 Tk/hr","id":1},
-        {"Name":"Teaching","Charge":"200 Tk/hr","id":2},
-        {"Name":"cooking","Charge":"200 Tk/hr","id":3}
+        {"service_name":"Shopping","charge":"24 Tk/hr","id":1},
+        {"service_name":"Teaching","charge":"200 Tk/hr","id":2},
+        {"service_name":"cooking","charge":"200 Tk/hr","id":3}
     ])
 
-    let works=[
-        {client:"Fuad",worker:"Tithi",rating:"2",description:"Had fun wok with blah blah... .... ...",tag:"Shopping"},
-        {client:"Fuad",worker:"Tithi",rating:"2",description:"Had fun wok with blah blah... .... ...",tag:"Shopping"},
-        {client:"Fuad",worker:"Tithi",rating:"2",description:"Had fun wok with blah blah... .... ...",tag:"Shopping"},
-        {client:"Fuad",worker:"Tithi",rating:"2",description:"Had fun wok with blah blah... .... ...",tag:"Shopping"}
-    ]
+    const [works,setWorks]=useState([
+        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
+        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
+        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
+        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"}
+    ])
 
     let showSetNameModal=()=>{document.querySelector("#setNameModal").style.display="block"}
     let showSetLocationModal=()=>{document.querySelector("#setLocationModal").style.display="block"}
@@ -47,6 +48,24 @@ import ServiceModal from "./Modals/ServiceModal";
     let showHireNowModal=()=>{document.querySelector("#hireNowModal").style.display="block";}
     let showEducaionModal=()=>{document.querySelector("#educationModal").style.display="block";}
     let showServiceModal=()=>{document.querySelector("#serviceModal").style.display="block";}
+
+    useEffect(()=>{
+        if(localStorage.getItem("type")==="worker")
+        axios.get(`http://localhost:3001/worker?email=${localStorage.getItem("email")}`).then(res=>{
+            const data=res.data.user_data;
+            setEducations(data.educations)
+            setServices(data.services)
+            setWorks(data.works)
+            setName(data.basic_info.name)
+            setLocation({latitude:data.basic_info.latitude,longitude:data.basic_info.longitude,locaion:data.basic_info.location_name})
+            setPhoneNo(data.basic_info.phone_no)
+            if(data.basic_info.profile_pic)
+                setProfilePic(data.basic_info.profile_pic);
+            else
+                setProfilePic('./pics_icons/alter.png')
+            console.log(data)
+        })
+    },[])
     
     return(
         <div id="container">
@@ -88,8 +107,8 @@ import ServiceModal from "./Modals/ServiceModal";
                     <div id="educationlist">
                         {Educations.map(Education=>(
                             <div class="educationlistitem">
-                            <div id="educationinstitute">{Education.InstituteName}</div>
-                            <div id="educationyear"><b>{Education.Degree}</b> {Education.StartingYear}-{Education.EndingYear}</div>
+                            <div id="educationinstitute">{Education.institute}</div>
+                            <div id="educationyear"><b>{Education.degree}</b> {Education.starting_year}-{Education.ending_year}</div>
                             </div>
                         ))}
                     </div>
@@ -100,7 +119,7 @@ import ServiceModal from "./Modals/ServiceModal";
                     </div>
                     <div id="profileservicelist">
                         {Services.map(Service=>(
-                            <div class="profileservicelistitem">{Service.Name}</div>
+                            <div class="profileservicelistitem">{Service.service_name}</div>
                         ))}
                     </div>
                 </div>
@@ -111,10 +130,10 @@ import ServiceModal from "./Modals/ServiceModal";
                     <div id="profileworkhistorylist">
                         {works.map(work=>(
                             <div class="profileworkshitorylistitem">
-                                <div class="workwith">{`with ${work.client}`}</div>
+                                <div class="workwith">with <b>{` ${work.name}`}</b></div>
                                 <div class="rating"><Rating rating={work.rating}/></div>
-                                <div class="description">{`${work.description}`}</div>
-                                <div class="tag">{`${work.tag}`}</div>
+                                <div class="description">{`${work.review}`}</div>
+                                <div class="tag">{`${work.service_name}`}</div>
                             </div>
                         ))}
                     </div>

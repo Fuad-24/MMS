@@ -29,9 +29,9 @@ const EducaionModal=({Educations,setEducations})=>{
                 {Educations.map((Education)=>(
                     <div style={{display:"flex"}} class="EducaionModalListItem">
                         <div class="EducaionItemTextContainer">
-                            <span style={{fontSize:"18px"}}>{Education.InstituteName}<br/></span>
-                            <span style={{fontSize:"18px",color:"#AAA9A9"}}>{Education.StartingYear}-{Education.EndingYear}<br/></span>
-                            <span style={{fontSize:"18px",fontWeight:"bold"}}>{Education.Degree}</span>
+                            <span style={{fontSize:"18px"}}>{Education.institute}<br/></span>
+                            <span style={{fontSize:"18px",color:"#AAA9A9"}}>{Education.starting_year}-{Education.ending_year}<br/></span>
+                            <span style={{fontSize:"18px",fontWeight:"bold"}}>{Education.degree}</span>
                         </div>
                         <img onClick={()=>{setSelectedEducation(Education);showCreateEditEducationModal()}} src="./pics_icons/edit.png" style={{width:"18px",height:"18px",marginLeft:"auto",cursor:"pointer"}}/>
                         <img onClick={()=>deleteEducaion(Education.id)} src="./pics_icons/delete.png" style={{width:"18px",height:"18px",marginLeft:"8px",cursor:"pointer"}}/>

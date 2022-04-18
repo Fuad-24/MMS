@@ -12,18 +12,18 @@ const CreateEditServiceModal=({editService,setEditService,Services,setServices})
     let chargeChange=(e)=>{
         setCharge(e.target.value)
     }
-    const [serviceName,setServiceName]=useState(editService?editService.Name:null);
-    const [charge,setCharge]=useState(editService?editService.Charge:"");
+    const [serviceName,setServiceName]=useState(editService?editService.service_name:null);
+    const [charge,setCharge]=useState(editService?editService.charge:"");
     useEffect(()=>{
-        setServiceName(editService?editService.Name:null)
-        setCharge(editService?editService.Charge:null)
+        setServiceName(editService?editService.service_name:null)
+        setCharge(editService?editService.charge:null)
     },[editService])
     useEffect(()=>document.querySelector("#modalServiceCharge").value=charge,[charge])
     const save=()=>{
         if(charge===""||serviceName===null)
             {console.log('error input');return}
         let newServices=Services.filter(Service=>Service!=editService)
-        editService={Name:serviceName,Charge:charge+" TK/hr"}
+        editService={service_name:serviceName,charge:charge+" TK/hr"}
         newServices=[...newServices,editService]
         setServices(newServices)
         hideCreateEditServiceModal();
@@ -38,7 +38,7 @@ const CreateEditServiceModal=({editService,setEditService,Services,setServices})
         <div id="serviceEditContainer" >
             <ServiceSearchBar service={serviceName} setService={setServiceName}/>
             <div class="flex">
-            <input class="educationinputbox HW f24" id="modalServiceCharge" placeholder={editService?editService.Charge:"TK/hr"} onChange={chargeChange}/>
+            <input class="educationinputbox HW f24" id="modalServiceCharge" placeholder={editService?editService.charge:"TK/hr"} onChange={chargeChange}/>
             <div className="Button f24 " id="serviceSaveButton" onClick={save}>Save</div>
             </div>
         </div>
