@@ -14,7 +14,7 @@ CREATE TABLE Worker(
     profile_pic VARCHAR(300),
     phone_no VARCHAR(300),
     password VARCHAR(300),
-    active_status BOOLEAN,
+    active_status BOOLEAN DEFAULT TRUE,
     location_name VARCHAR(300),
     latitude DECIMAL(10,5),
     longitude DECIMAL(10,5)

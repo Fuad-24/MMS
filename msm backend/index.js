@@ -4,6 +4,7 @@ const bodyParser=require('body-parser')
 const cors=require('cors')
 const  {con,createMysqlConnection}=require('./sql')
 const sql = require('./sql')
+const {Login}=require('./src/loging_Handler')
 const {workerSignUpHandler,getWorkers,getWorker,updateWorker}=require('./src/worker_Handler')
 const {clientSignUpHandler,getClients,getClient,updateClient}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
@@ -60,6 +61,9 @@ app.delete('/servicerequest',(req,res)=>deletServiceRequest(
   res,req.query.location,req.query.status,req.query.client_email,
   req.query.worker_email,req.query.service_name,req.query.start_time)) 
 app.put('/servicerequest',(req,res)=>updateServiceRequestStartTime(res,req.body))
+
+
+app.get('/login',(req,res)=>Login(res,req.query.email,req.query.password))
 
 
 
