@@ -10,7 +10,9 @@ const TitleBar=({page,style})=>{
     
     let addLis=()=>{document.addEventListener('click', function(event) {
         var isClickInsideElement1 = document.querySelector("#lgm").contains(event.target);
-        var isClickInsideElement2 = document.querySelector("#titlebarimg").contains(event.target);
+        var isClickInsideElement2=null;
+        if(document.querySelector("#titlebarimg"))
+            isClickInsideElement2 = document.querySelector("#titlebarimg").contains(event.target);
         if (!isClickInsideElement1 && !isClickInsideElement2) {
             setMenuVis(false);
         }
