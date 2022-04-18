@@ -64,5 +64,35 @@ const updateWorker=(res,email,payload)=>{
         })
     })
 }
+const getWorkerInfo=(res,email)=>{
+    var query=`SELECT * FROM Worker WHERE email="${email}";`
+    var user={}
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error;
+        user.basic_info=result[0];
+        query=`SELECT * FROM Education WHERE email="${email}";`
+        con.query(query,(error,result)=>{
+            if(error)
+                throw error;
+            user.educations=result;
+            query=`SELECT * FROM WorkerService WHERE email="${email}";`
+            con.query(query,(error,result)=>{
+                if(error)
+                    throw error;
+                user.services=result;
+                query=`SELECT name,rating,review,service_name FROM ServiceRequest
+                INNER JOIN Client ON ServiceRequest.client_email=Client.email
+                WHERE worker_email="${email}" ;`
+                con.query(query,(error,result)=>{
+                    if(error)
+                        throw error
+                    user.works=result;
+                    res.send({user_data:user})
+                })
+            })
+        })
+    })
+}
 
-module.exports={workerSignUpHandler,getWorkers,getWorker,updateWorker}
+module.exports={workerSignUpHandler,getWorkers,getWorker,updateWorker,getWorkerInfo}

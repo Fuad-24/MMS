@@ -5,7 +5,7 @@ const cors=require('cors')
 const  {con,createMysqlConnection}=require('./sql')
 const sql = require('./sql')
 const {Login}=require('./src/loging_Handler')
-const {workerSignUpHandler,getWorkers,getWorker,updateWorker}=require('./src/worker_Handler')
+const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker}=require('./src/worker_Handler')
 const {clientSignUpHandler,getClients,getClient,updateClient}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService}=require('./src/workService_Handler')
@@ -36,7 +36,7 @@ app.post('/',(req,res)=>{
 
 app.post('/worker',(req,res)=>workerSignUpHandler({payload:req.body,res:res}))
 app.get('/workers',(req,res)=>getWorkers(res))
-app.get('/worker',(req,res)=>getWorker(res,req.query.email))
+app.get('/worker',(req,res)=>getWorkerInfo(res,req.query.email))
 app.post('/updateworker',(req,res)=>updateWorker(res,req.body.email,req.body))
 
 app.post('/client',(req,res)=>clientSignUpHandler({payload:req.body,res:res}))
