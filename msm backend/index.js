@@ -4,12 +4,25 @@ const bodyParser=require('body-parser')
 const cors=require('cors')
 const  {con,createMysqlConnection}=require('./sql')
 const sql = require('./sql')
+const multer=require('multer')
+
 const {Login}=require('./src/loging_Handler')
-const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker}=require('./src/worker_Handler')
-const {clientSignUpHandler,getClients,getClient,updateClient}=require('./src/client_Handler')
+const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker,uploadWorkerImage}=require('./src/worker_Handler')
+const {clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService,getServices}=require('./src/workService_Handler')
 const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}=require('./src/serviceRequest_Handler')
+
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+     cb(null,'./uploads/');
+  },
+  filename:(req,file,cb)=>{
+    cb(null,new Date().toISOString()+file.originalname)
+  }
+});
+const upload=multer({storage:storage})
+app.use('/uploads',express.static('uploads'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -38,11 +51,14 @@ app.post('/worker',(req,res)=>workerSignUpHandler({payload:req.body,res:res}))
 app.get('/workers',(req,res)=>getWorkers(res))
 app.get('/worker',(req,res)=>getWorkerInfo(res,req.query.email))
 app.post('/updateworker',(req,res)=>updateWorker(res,req.body.email,req.body))
+app.post('/workerprofilepic',upload.single('profile_pic'),(req,res)=>uploadWorkerImage(res,req.body.email,req.file))
 
 app.post('/client',(req,res)=>clientSignUpHandler({payload:req.body,res:res}))
 app.get('/clients',(req,res)=>getClients(res))
 app.get('/client',(req,res)=>getClient(res,req.query.email))
 app.post('/updateclient',(req,res)=>updateClient(res,req.body.email,req.body))
+app.post('/clientprofilepic',upload.single('profile_pic'),(req,res)=>uploadClientImage(res,req.body.email,req.file))
+
 
 app.get('/education',(req,res)=>getEducations(res,req.query.email))
 app.post('/education',(req,res)=>createEducation(res,req.body))

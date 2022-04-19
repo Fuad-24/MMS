@@ -11,7 +11,7 @@ use mms;
 CREATE TABLE Worker(
     email VARCHAR(300) PRIMARY KEY,
     name VARCHAR(300),
-    profile_pic VARCHAR(300),
+    profile_pic TEXT,
     phone_no VARCHAR(300),
     password VARCHAR(300),
     active_status BOOLEAN DEFAULT TRUE,
@@ -23,7 +23,7 @@ CREATE TABLE Worker(
 CREATE TABLE Client(
     email VARCHAR(300) PRIMARY KEY,
     name VARCHAR(300),
-    profile_pic VARCHAR(300),
+    profile_pic TEXT,
     phone_no VARCHAR(300),
     password VARCHAR(300)
 );

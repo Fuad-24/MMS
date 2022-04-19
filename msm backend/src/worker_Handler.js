@@ -94,5 +94,21 @@ const getWorkerInfo=(res,email)=>{
         })
     })
 }
+const uploadWorkerImage=(res,email,image)=>{
+    let query=`UPDATE Worker
+    SET profile_pic="${image.path}"
+    WHERE email="${email}";
+    `
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error
+        res.send({
+            error:error,
+            result:result
+        })
+    })
+    console.log(email) 
+    console.log(image)
+}
 
-module.exports={workerSignUpHandler,getWorkers,getWorker,updateWorker,getWorkerInfo}
+module.exports={workerSignUpHandler,getWorkers,getWorker,updateWorker,getWorkerInfo,uploadWorkerImage}

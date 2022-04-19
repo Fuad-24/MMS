@@ -26,12 +26,13 @@ const getEducations=(res,email)=>{
 
 const updateEducation=(res,payload)=>{
     let query=`SELECT * FROM Education WHERE email="${payload.email}" AND degree="${payload.degree}";`
+    console.log(payload)
     con.query(query,(error,result)=>{
         if(error)throw error;
         let education=result[0];
         if(payload.starting_year)education.starting_year=payload.starting_year
         if(payload.ending_year)education.ending_year=payload.ending_year
-        if(payload.institute)education.institute=payload.institute
+        if(payload.institute)education.institute=payload.institute 
         if(payload.degree)education.degree=payload.degree
         query=`UPDATE Education
         SET degree=${education.degree?`"${education.degree}"`:education.degree},

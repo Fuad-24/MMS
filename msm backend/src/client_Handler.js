@@ -1,5 +1,4 @@
 const {con}=require('../sql')
-
 const clientSignUpHandler=({payload,res})=>{
     const {email,name,password}=payload
     var query=`INSERT INTO Client(name,email,password) VALUES("${name}","${email}","${password}");`
@@ -56,5 +55,21 @@ const updateClient=(res,email,payload)=>{
         })
     })
 }
+const uploadClientImage=(res,email,image)=>{
+    let query=`UPDATE Client
+    SET profile_pic="${image.path}"
+    WHERE email="${email}";
+    `
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error
+        res.send({
+            error:error,
+            result:result
+        })
+    })
+    console.log(email) 
+    console.log(image)
+}
 
-module.exports={clientSignUpHandler,getClients,getClient,updateClient}
+module.exports={clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage}
