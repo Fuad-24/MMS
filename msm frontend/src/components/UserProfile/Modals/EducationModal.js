@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './style.css'
 import CreateEditEducationModal from "./CreateEditEducationModal";
+import axios from "axios";
 
 const EducaionModal=({Educations,setEducations})=>{
     let hideEducaionModal=()=>{
@@ -10,11 +11,15 @@ const EducaionModal=({Educations,setEducations})=>{
         document.querySelector("#createEditEducationModal").style.display="block";
         hideEducaionModal();
     }
-    const deleteEducaion=(id)=>{
-        let newEducations=Educations.filter(Education=>Education.id!=id)
-        setEducations(newEducations)
+    const deleteEducaion=(degree)=>{
+        let newEducations=Educations.filter(Education=>Education.degree!=degree)
+        axios.delete(`http://localhost:3001/education?email=${localStorage.getItem("email")}&degree=${degree}`).then(
+            setEducations(newEducations)
+        )
+        
     }
     const [selectedEducation,setSelectedEducation]=useState(null)
+    const [editing,setEditing]=useState(false)
     return(
     <div>
     <div class="ModalBody" id="educationModal" >
@@ -24,7 +29,7 @@ const EducaionModal=({Educations,setEducations})=>{
         </div>
         <div style={{ margin:"auto",textAlign:"left"}}>
             <span style={{fontSize:"36px",paddingRight:"8px"}}>Your Educaion</span>
-            <img onClick={showCreateEditEducationModal} id="addEducaion" style={{width:"38px",height:"38px",cursor:"pointer"}} src="./pics_icons/add.png"/>
+            <img onClick={()=>{setEditing(false);showCreateEditEducationModal()}} id="addEducaion" style={{width:"38px",height:"38px",cursor:"pointer"}} src="./pics_icons/add.png"/>
             <div>
                 {Educations.map((Education)=>(
                     <div style={{display:"flex"}} class="EducaionModalListItem">
@@ -33,15 +38,15 @@ const EducaionModal=({Educations,setEducations})=>{
                             <span style={{fontSize:"18px",color:"#AAA9A9"}}>{Education.starting_year}-{Education.ending_year}<br/></span>
                             <span style={{fontSize:"18px",fontWeight:"bold"}}>{Education.degree}</span>
                         </div>
-                        <img onClick={()=>{setSelectedEducation(Education);showCreateEditEducationModal()}} src="./pics_icons/edit.png" style={{width:"18px",height:"18px",marginLeft:"auto",cursor:"pointer"}}/>
-                        <img onClick={()=>deleteEducaion(Education.id)} src="./pics_icons/delete.png" style={{width:"18px",height:"18px",marginLeft:"8px",cursor:"pointer"}}/>
+                        <img onClick={()=>{setEditing(true);setSelectedEducation(Education);showCreateEditEducationModal()}} src="./pics_icons/edit.png" style={{width:"18px",height:"18px",marginLeft:"auto",cursor:"pointer"}}/>
+                        <img onClick={()=>deleteEducaion(Education.degree)} src="./pics_icons/delete.png" style={{width:"18px",height:"18px",marginLeft:"8px",cursor:"pointer"}}/>
                     </div>
                 ))}
             </div>
         </div>
     </div>
     </div>
-    <CreateEditEducationModal selectedEducation={selectedEducation} setSelectedEducation={setSelectedEducation} Educations={Educations} setEducations={setEducations}/>
+    <CreateEditEducationModal selectedEducation={selectedEducation} setSelectedEducation={setSelectedEducation} Educations={Educations} setEducations={setEducations} editing={editing}/>
     </div>
     )
 }

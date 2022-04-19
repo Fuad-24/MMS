@@ -5,7 +5,7 @@ import LogoutMenu from "./LogoutMenu";
 const hideMenu=()=>{document.querySelector("#lgm").style.display="none"}
 const showMenu=()=>{document.querySelector("#lgm").style.display="block"}
 
-const TitleBar=({page,style})=>{
+const TitleBar=({page,style,up})=>{
     const[menuVis,setMenuVis]=useState(false);
     
     let addLis=()=>{document.addEventListener('click', function(event) {
@@ -52,7 +52,7 @@ const TitleBar=({page,style})=>{
                 <a href="" class="tab">find workers</a>
                 <a href="" class="tab">my hires</a>
             </div>
-            <img src={localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
+            <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
         </div>
         <LogoutMenu setMenuVis={setMenuVis}/>

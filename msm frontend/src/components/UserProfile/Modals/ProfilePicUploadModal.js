@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, { useState } from "react";
 import LocationSearchBar from "../../common/LocationSearchBar";
 import './style.css'
 
 const ProfilePicUploadModal=({profilePic,setProfilePic})=>{
     const [selectedImage,setSelectedImage]=useState(null);
+    const [selectedImageFile,setSelectedImageFile]=useState(null);
     let selectImage=(e)=>{
         const file=e.target.files[0];
         console.log(e.target.files)
@@ -14,6 +16,7 @@ const ProfilePicUploadModal=({profilePic,setProfilePic})=>{
         reader.addEventListener("load",()=>{
             //console.log(reader.result);
             setSelectedImage(reader.result);
+            setSelectedImageFile(file);
         })
         reader.readAsDataURL(file);
         document.querySelector("#selectedImage").style.display="block";
@@ -28,8 +31,22 @@ const ProfilePicUploadModal=({profilePic,setProfilePic})=>{
         document.querySelector("#setProfilePicModal").style.display="none";
     }
     const makeProfilePic=()=>{
-        if(selectedImage)
+        if(selectedImage){
             setProfilePic(selectedImage)
+            const fd=new FormData()
+            fd.append('profile_pic',selectedImageFile,selectedImageFile.name)
+            fd.append('email',localStorage.getItem("email"))
+            if(localStorage.getItem("type")==="worker")
+                axios.post('http://localhost:3001/workerprofilepic',fd).then(res=>{
+                    localStorage.setItem("profile_pic",selectedImage)
+                })
+            else
+                axios.post('http://localhost:3001/clientprofilepic',fd).then(res=>{
+                    localStorage.setItem("profile_pic",selectedImage)
+                })
+            
+            console.log(selectedImageFile)
+        }
         hideSetProfilePicModal();
     }
     return(

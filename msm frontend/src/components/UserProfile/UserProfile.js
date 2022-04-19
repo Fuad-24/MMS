@@ -60,7 +60,7 @@ import axios from "axios";
             setLocation({"latitude":data.basic_info.latitude,"longitude":data.basic_info.longitude,"location":data.basic_info.location_name})
             setPhoneNo(data.basic_info.phone_no)
             if(data.basic_info.profile_pic)
-                setProfilePic(data.basic_info.profile_pic);
+                setProfilePic("http://localhost:3001/"+data.basic_info.profile_pic);
             else
                 setProfilePic('./pics_icons/alter.png')
             console.log(data)
@@ -69,7 +69,7 @@ import axios from "axios";
     
     return(
         <div id="container">
-            <TitleBar page="clientPage"/>
+            <TitleBar page="clientPage" up={profilepic}/>
             <div id="profilediv">
                 <div id="basicinfo" class="userinfo">
                     <div id="profilepicdiv">
@@ -129,12 +129,13 @@ import axios from "axios";
                     </div>
                     <div id="profileworkhistorylist">
                         {works.map(work=>(
+                            work.review?
                             <div class="profileworkshitorylistitem">
                                 <div class="workwith">with <b>{` ${work.name}`}</b></div>
                                 <div class="rating"><Rating rating={work.rating}/></div>
                                 <div class="description">{`${work.review}`}</div>
                                 <div class="tag">{`${work.service_name}`}</div>
-                            </div>
+                            </div>:null
                         ))}
                     </div>
                 </div>
