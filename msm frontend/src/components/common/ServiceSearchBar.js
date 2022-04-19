@@ -1,8 +1,15 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 
 const ServiceSearchBar=({setService,service})=>{
-    let services=["Cleaning","RcikshawPulling","Hawkering","Caretalomg","Helping"]
+    const [services,setServices]=useState([])
+    useEffect(()=>{
+        axios.get('http://localhost:3001/service').then(res=>{
+            const service_names=res.data.result.map(service=>service.service_name)
+            setServices(service_names)
+        });
+    },[])
     useEffect(()=>selectService(service),[service])
     let ontype=(e)=>{
         addDataToDiv(e.target.value,"#serviceresult");
@@ -26,10 +33,12 @@ const ServiceSearchBar=({setService,service})=>{
         let tempresults=services.filter(result=>result.toLowerCase().includes(search.toLowerCase()))
         if(search===""&&false);
             //tempresults=[];
+        let i=0;
         tempresults.map(result=>{
-            resultdiv.innerHTML+=`<div class="li" id=${result}>${result}</div>`
+            resultdiv.innerHTML+=`<div class="li" id=id${i++}>${result}</div>`
         })
-        tempresults.map(result=>document.querySelector(`#${result}`).onclick=()=>{selectService(result)})
+        i=0;
+        tempresults.map(result=>document.querySelector(`#id${i++}`).onclick=()=>{selectService(result)})
     }
     
     let addServiceBarOutsideClickListener=()=>{document.addEventListener('click', function(event) {

@@ -57,7 +57,7 @@ import axios from "axios";
             setServices(data.services)
             setWorks(data.works)
             setName(data.basic_info.name)
-            setLocation({latitude:data.basic_info.latitude,longitude:data.basic_info.longitude,locaion:data.basic_info.location_name})
+            setLocation({"latitude":data.basic_info.latitude,"longitude":data.basic_info.longitude,"location":data.basic_info.location_name})
             setPhoneNo(data.basic_info.phone_no)
             if(data.basic_info.profile_pic)
                 setProfilePic(data.basic_info.profile_pic);

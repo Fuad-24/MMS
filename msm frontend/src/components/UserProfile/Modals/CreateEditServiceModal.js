@@ -1,8 +1,9 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ServiceSearchBar from "../../common/ServiceSearchBar";
 import './style.css'
 
-const CreateEditServiceModal=({editService,setEditService,Services,setServices})=>{
+const CreateEditServiceModal=({editService,setEditService,Services,setServices,editing})=>{
     let hideCreateEditServiceModal=()=>{
         document.querySelector("#createEditServiceModal").style.display="none";
         setServiceName(null);
@@ -23,10 +24,32 @@ const CreateEditServiceModal=({editService,setEditService,Services,setServices})
         if(charge===""||serviceName===null)
             {console.log('error input');return}
         let newServices=Services.filter(Service=>Service!=editService)
-        editService={service_name:serviceName,charge:charge+" TK/hr"}
+
+        editService={service_name:serviceName,charge:charge}
+
+        console.log(editService)
         newServices=[...newServices,editService]
-        setServices(newServices)
-        hideCreateEditServiceModal();
+        if(editing)
+            axios.patch("http://localhost:3001/workerservice",{
+                email:localStorage.getItem("email"),
+                service_name:editService.service_name,
+                charge:editService.charge
+            }).then(res=>{
+                if(!res.data.error)
+                    setServices(newServices)
+                hideCreateEditServiceModal();
+            })
+        else{
+            axios.post("http://localhost:3001/workerservice",{
+                email:localStorage.getItem("email"),
+                service_name:editService.service_name,
+                charge:editService.charge
+            }).then(res=>{
+                if(!res.data.error)
+                    setServices(newServices)
+                hideCreateEditServiceModal();
+            })
+        }
     }
     return(
     <div class="ModalBody" id="createEditServiceModal">
@@ -36,7 +59,8 @@ const CreateEditServiceModal=({editService,setEditService,Services,setServices})
         </div>
         <div style={{margin:"auto"}}>
         <div id="serviceEditContainer" >
-            <ServiceSearchBar service={serviceName} setService={setServiceName}/>
+            {editing?<div class="inputboxcontaier"><div class="input" style={{fontSize:"24px"}}>{editService?editService.service_name:null}</div></div>:
+            <ServiceSearchBar service={serviceName} setService={setServiceName}/>}
             <div class="flex">
             <input class="educationinputbox HW f24" id="modalServiceCharge" placeholder={editService?editService.charge:"TK/hr"} onChange={chargeChange}/>
             <div className="Button f24 " id="serviceSaveButton" onClick={save}>Save</div>
