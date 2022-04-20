@@ -71,5 +71,35 @@ const uploadClientImage=(res,email,image)=>{
     console.log(email) 
     console.log(image)
 }
+const getClientInfo=(res,email)=>{
+    var query=`SELECT * FROM Client WHERE email="${email}";`
+    var user={}
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error;
+        user.basic_info=result[0];
+        query=`SELECT * FROM Education WHERE email="${email}";`
+        con.query(query,(error,result)=>{
+            if(error)
+                throw error;
+            user.educations=result;
+            query=`SELECT * FROM WorkerService WHERE email="${email}";`
+            con.query(query,(error,result)=>{
+                if(error)
+                    throw error;
+                user.services=result;
+                query=`SELECT name,rating,review,service_name FROM ServiceRequest
+                INNER JOIN Worker ON ServiceRequest.worker_email=Worker.email
+                WHERE client_email="${email}" ;`
+                con.query(query,(error,result)=>{
+                    if(error)
+                        throw error
+                    user.works=result;
+                    res.send({user_data:user})
+                })
+            })
+        })
+    })
+}
 
-module.exports={clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage}
+module.exports={clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage,getClientInfo}

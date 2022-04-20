@@ -8,10 +8,11 @@ const multer=require('multer')
 
 const {Login}=require('./src/loging_Handler')
 const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker,uploadWorkerImage}=require('./src/worker_Handler')
-const {clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage}=require('./src/client_Handler')
+const {clientSignUpHandler,getClients,getClientInfo,updateClient,uploadClientImage}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService,getServices}=require('./src/workService_Handler')
 const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}=require('./src/serviceRequest_Handler')
+const {getLandingPageCount,searchWorker}=require('./src/common')
 
 const storage=multer.diskStorage({
   destination:(req,file,cb)=>{
@@ -55,7 +56,7 @@ app.post('/workerprofilepic',upload.single('profile_pic'),(req,res)=>uploadWorke
 
 app.post('/client',(req,res)=>clientSignUpHandler({payload:req.body,res:res}))
 app.get('/clients',(req,res)=>getClients(res))
-app.get('/client',(req,res)=>getClient(res,req.query.email))
+app.get('/client',(req,res)=>getClientInfo(res,req.query.email))
 app.post('/updateclient',(req,res)=>updateClient(res,req.body.email,req.body))
 app.post('/clientprofilepic',upload.single('profile_pic'),(req,res)=>uploadClientImage(res,req.body.email,req.file))
 
@@ -82,6 +83,8 @@ app.put('/servicerequest',(req,res)=>updateServiceRequestStartTime(res,req.body)
 
 
 app.get('/login',(req,res)=>Login(res,req.query.email,req.query.password))
+app.get('/searchworker',(req,res)=>searchWorker(res,req.query.latitude,req.query.longitude,req.query.service_name))
+app.get('/landingpagecount',(req,res)=>getLandingPageCount(res))
 
 
 
