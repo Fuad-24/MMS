@@ -11,9 +11,9 @@ function App() {
       <div id="body">
         {
         //<LandingPage/>
-        //<Login/>
-       // <ClientSearchPage/>
-        <UserProfile/>
+       //<Login/>
+       //<ClientSearchPage/>
+      <UserProfile/>
         }
       </div>
     </div>

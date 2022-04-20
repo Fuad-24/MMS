@@ -54,6 +54,14 @@ const TitleBar=({page,style,up})=>{
             </div>
             <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
+            { page==="workerPage"?(<div id="titlebarclientcontainer">
+            <div id="clienttabs" class="tabcontainer">
+                <a href="" class="tab">profile</a>
+                <a href="" class="tab">my services</a>
+                <a href="" class="tab">my requests</a>
+            </div>
+            <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
+            </div>):null}
         </div>
         <LogoutMenu setMenuVis={setMenuVis}/>
         </div>

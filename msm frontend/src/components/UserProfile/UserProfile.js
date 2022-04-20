@@ -40,6 +40,7 @@ import axios from "axios";
         {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
         {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"}
     ])
+    const [type,setType]=useState(localStorage.getItem("type"))
 
     let showSetNameModal=()=>{document.querySelector("#setNameModal").style.display="block"}
     let showSetLocationModal=()=>{document.querySelector("#setLocationModal").style.display="block"}
@@ -50,8 +51,7 @@ import axios from "axios";
     let showServiceModal=()=>{document.querySelector("#serviceModal").style.display="block";}
 
     useEffect(()=>{
-        if(localStorage.getItem("type")==="worker")
-        axios.get(`http://localhost:3001/worker?email=${localStorage.getItem("email")}`).then(res=>{
+        axios.get(`http://localhost:3001/${type}?email=${localStorage.getItem("email")}`).then(res=>{
             const data=res.data.user_data;
             setEducations(data.educations)
             setServices(data.services)
@@ -69,7 +69,7 @@ import axios from "axios";
     
     return(
         <div id="container">
-            <TitleBar page="clientPage" up={profilepic}/>
+            <TitleBar page={type==="client"?"clientPage":"workerPage"} up={profilepic}/>
             <div id="profilediv">
                 <div id="basicinfo" class="userinfo">
                     <div id="profilepicdiv">
@@ -84,11 +84,11 @@ import axios from "axios";
                             <img id="nameediticon" src="./pics_icons/edit.png" onClick={showSetNameModal} class="pointer"/>
                         </div>
                         
-                        <div id="Profilelocation">
+                        {type==="worker"?<div id="Profilelocation">
                             <img id="locaionicon" src="./pics_icons/location.png"/>
                             {location.location}
                             <img id="locationediticon" src="./pics_icons/edit.png" class="pointer" onClick={showSetLocationModal}/>
-                        </div>
+                        </div>:null}
                         
                         <div id="phoneno">
                             <img id="phoneicon" src="./pics_icons/phone-callg.png"/>
@@ -97,10 +97,11 @@ import axios from "axios";
                         </div>
                     </div>
                     <div id="buttondiv">
-                        <div id="profilehirebtn" class="pointer" onClick={showHireNowModal}>Hire Now</div>
+                        {//<div id="profilehirebtn" class="pointer" onClick={showHireNowModal}>Hire Now</div>
+                        }
                     </div>
                 </div>
-                <div id="educationdiv" class="userinfo">
+                {type==="worker"?<div id="educationdiv" class="userinfo">
                     <div class="infotitle">
                         Education<img id="educationediticon" class="infoediticon pointer" src="./pics_icons/edit.png" onClick={showEducaionModal}/>
                     </div>
@@ -112,8 +113,8 @@ import axios from "axios";
                             </div>
                         ))}
                     </div>
-                </div>
-                <div id="servicesdiv" class="userinfo">
+                </div>:null}
+                {type==="worker"?<div id="servicesdiv" class="userinfo">
                     <div class="infotitle">
                         Services <img id="serviceediticon" class="infoediticon pointer" src="./pics_icons/edit.png" onClick={showServiceModal}/>
                     </div>
@@ -122,7 +123,7 @@ import axios from "axios";
                             <div class="profileservicelistitem">{Service.service_name}</div>
                         ))}
                     </div>
-                </div>
+                </div>:null}
                 <div id="workhistorydiv" class="userinfo">
                     <div class="infotitle">
                         Work History

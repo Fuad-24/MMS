@@ -3,16 +3,25 @@ import Title_bar from '../common/Title_bar';
 import Footer from "../common/footer/Footer";
 import LocationSearchBar from "../common/LocationSearchBar";
 import ServiceSearchBar from "../common/ServiceSearchBar";
+import Notification from "../common/Notification";
 import './style.css';
+import axios from "axios";
 
 const ClinetSearhPage=()=>{
     const [position,setPosition]=useState(null);
     const [service,setService]=useState(null);
+    const [text,setText]=useState(null);
     const Search=()=>{
         if(position==null||service==null)
-            alert("Location or service invalid");
+            setText("Location or service invalid");
         else
-            alert(`Service:${service}\n Postion;${position.location}`);
+            axios.get(`http://localhost:3001/searchworker?longitude=${position.longitude}&latitude=${position.latitude}&service_name=${service}`).then(res=>{
+                console.log(res.data)
+                setText(`found ${res.data.length} workers`);
+            })
+        console.log(service)
+        console.log(position)
+            
     }
     return(
         <div>
@@ -25,6 +34,7 @@ const ClinetSearhPage=()=>{
                 </div>
             </div>
             <Footer/>
+            <Notification text={text} setText={setText}/>
         </div>
     )
 }

@@ -10,7 +10,7 @@ const setLocalStorage=(data)=>{
     localStorage.setItem("email", data.user.email);
     localStorage.setItem("name", data.user.name);
     if(data.user.profile_pic)
-        localStorage.setItem("profile_pic", data.user.profile_pic);
+        localStorage.setItem("profile_pic","http://localhost:3001/"+data.user.profile_pic);
     else
         localStorage.setItem("profile_pic","./pics_icons/alter.png")
     localStorage.setItem("phone_no", data.user.phone_no);
