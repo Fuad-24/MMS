@@ -1,0 +1,67 @@
+#signup {
+    width: 520px;
+    max-width: 100%;
+    border: 2px solid #d4d4d4;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 24px auto;
+    padding-top: 32px;
+  }
+
+  #signuptxt {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 32px;
+    padding: 8px;
+  }
+
+  #alreadyhaveaccount {
+    color: #aaa9a9;
+    font-size: 24px;
+    font-weight: lighter;
+    cursor: pointer;
+    margin-bottom: 32px;
+    padding: 8px;
+  }
+
+  #logIn {
+    color: green;
+    font-size: 24px;
+    font-weight: lighter;
+    cursor: pointer;
+    margin-bottom: 32px;
+    padding: 8px;
+  }
+
+  #container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rectangle {
+    display: inline-block;
+    width: 120px;
+    height: 150px;
+    background: white;
+    border: 2px solid #dedbdb;
+    border-radius: 8px;
+    box-shadow: 1px 3px grey;
+  }
+
+  .image {
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    padding: 10px;
+  }
+  .rectxt {
+    color: black;
+    font-size: 22px;
+    padding: 1px;
+    margin: 1px auto;
+  }
+  
