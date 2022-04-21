@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import './style.css'
 
@@ -8,7 +9,22 @@ const UserNameModal=({name,setName})=>{
     const saveName=()=>{
         let newName=document.querySelector("#ModalNameField").value;
         if(newName)
-            setName(newName)
+            {   
+                if(localStorage.getItem("type")==="worker")
+                    axios.post("http://localhost:3001/updateworker",{
+                        email:localStorage.getItem("email"),
+                        name:newName
+                    }).then(res=>{
+                        setName(newName)
+                    })
+                if(localStorage.getItem("type")==="client")
+                    axios.post("http://localhost:3001/updateclient",{
+                        email:localStorage.getItem("email"),
+                        name:newName
+                    }).then(res=>{
+                        setName(newName)
+                    })
+            }
         hideSetNameModal()
     }
     return(

@@ -5,12 +5,14 @@ import LogoutMenu from "./LogoutMenu";
 const hideMenu=()=>{document.querySelector("#lgm").style.display="none"}
 const showMenu=()=>{document.querySelector("#lgm").style.display="block"}
 
-const TitleBar=({page,style})=>{
+const TitleBar=({page,style,up})=>{
     const[menuVis,setMenuVis]=useState(false);
     
     let addLis=()=>{document.addEventListener('click', function(event) {
         var isClickInsideElement1 = document.querySelector("#lgm").contains(event.target);
-        var isClickInsideElement2 = document.querySelector("#titlebarimg").contains(event.target);
+        var isClickInsideElement2=null;
+        if(document.querySelector("#titlebarimg"))
+            isClickInsideElement2 = document.querySelector("#titlebarimg").contains(event.target);
         if (!isClickInsideElement1 && !isClickInsideElement2) {
             setMenuVis(false);
         }
@@ -50,7 +52,15 @@ const TitleBar=({page,style})=>{
                 <a href="" class="tab">find workers</a>
                 <a href="" class="tab">my hires</a>
             </div>
-            <img src="./pics_icons/profilepic.jpg" id="titlebarimg" onClick={titleImgClick}/>
+            <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
+            </div>):null}
+            { page==="workerPage"?(<div id="titlebarclientcontainer">
+            <div id="clienttabs" class="tabcontainer">
+                <a href="" class="tab">profile</a>
+                <a href="" class="tab">my services</a>
+                <a href="" class="tab">my requests</a>
+            </div>
+            <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
         </div>
         <LogoutMenu setMenuVis={setMenuVis}/>

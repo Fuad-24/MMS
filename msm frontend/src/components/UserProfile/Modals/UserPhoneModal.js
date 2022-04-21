@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import './style.css'
 
 const UserPhoneModal=({phoneNo,setPhoneNo})=>{
@@ -8,7 +9,22 @@ const UserPhoneModal=({phoneNo,setPhoneNo})=>{
     let savePhoneNo=()=>{
         let newNo=document.querySelector("#ModalPhoneField").value;
         if(newNo)
-            setPhoneNo(newNo)
+        {
+            if(localStorage.getItem("type")==="worker")
+                axios.post("http://localhost:3001/updateworker",{
+                    email:localStorage.getItem("email"),
+                    phone_no:newNo
+                }).then(res=>{
+                    setPhoneNo(newNo)
+                })
+            if(localStorage.getItem("type")==="client")
+                axios.post("http://localhost:3001/updateclient",{
+                    email:localStorage.getItem("email"),
+                    phone_no:newNo
+                }).then(res=>{
+                    setPhoneNo(newNo)
+                })
+        }
         hideSetPhoneModal()
     }
     return(
