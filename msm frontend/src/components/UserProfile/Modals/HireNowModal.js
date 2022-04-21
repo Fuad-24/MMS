@@ -1,11 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import './style.css'
 
-const HireNowModal=({services})=>{
+import Notification from "../../common/Notification";
+
+const HireNowModal=({services,searchedLocation,user_email})=>{
+    const [text,setText]=useState(null);
     let hideHireModal=()=>{
         document.querySelector("#hireNowModal").style.display="none";
     }
-    let requeForService=(id)=>{alert("requested for service "+`${id}`)}
+    let requeForService=(service)=>{
+        axios.post('http://localhost:3001/servicerequest',{
+            location:searchedLocation,
+            client_email:localStorage.getItem("email"),
+            worker_email:user_email,
+            service_name:service.service_name
+        }).then(res=>{
+            console.log(res.data)
+            if(res.data.error)
+                setText('Already have a request pending!')
+            else
+                setText('Request Sent!')
+        })
+        //alert("requested for service "+`${service.service_name} location: ${searchedLocation}`)
+        
+    }
 
     console.log(services);
     return(
@@ -17,7 +36,7 @@ const HireNowModal=({services})=>{
         <div>
             {services.map(service=>(
                 <div class="servcieModlaListItem" onClick={()=>{
-                    requeForService(service.id);
+                    requeForService(service);
                 }}>
                     <span class="service_modal_list_name">{service.service_name}</span>
                     <span class="service_modal_list_charge">{`${service.charge} Tk/hr`}</span>
@@ -25,6 +44,7 @@ const HireNowModal=({services})=>{
                 ))}
         </div>
     </div>
+    <Notification text={text} setText={setText}/>
     </div>
     )
 }
