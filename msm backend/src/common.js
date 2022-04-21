@@ -43,4 +43,63 @@ const searchWorker=(res,latitude,longitude,service_name)=>{
     })
     
 }
-module.exports={keyMap,getLandingPageCount,searchWorker}
+const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type)=>{
+    let user_type="client"
+    if(viewer_type==="client")
+        user_type="worker"
+    console.log(user_email+" "+user_type+" "+viewer_email+" "+viewer_type)
+    let user={}
+    let query=`SELECT * FROM ${user_type==="worker"?"Worker":"Client"} WHERE email="${user_email}"`
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error
+        user.basic_info=result[0]
+        user.basic_info.password="donno"
+        let client=user_email
+        let worker=user_email
+        if(user_type==="worker")
+            client=viewer_email
+        else
+            worker=viewer_email
+        query=`SELECT status FROM ServiceRequest
+        WHERE client_email="${client}" AND worker_email="${worker}" AND status="Running";
+        `
+        con.query(query,(error,result)=>{
+            if(error)
+                throw error
+            if(result.length===0)
+                user.basic_info.phone_no=null;
+            query=`SELECT * FROM Education WHERE email="${user_email}";`
+            con.query(query,(error,result)=>{
+                if(error)
+                    throw error;
+                user.educations=result;
+                query=`SELECT * FROM WorkerService WHERE email="${user_email}";`
+                con.query(query,(error,result)=>{
+                    if(error)
+                        throw error;
+                    user.services=result;
+                    if(user_type==="worker")
+                        query=`SELECT name,rating,review,service_name FROM ServiceRequest
+                        INNER JOIN Client ON ServiceRequest.client_email=Client.email
+                        WHERE worker_email="${user_email}" ;`
+                    else
+                        query=`SELECT name,rating,review,service_name FROM ServiceRequest
+                        INNER JOIN Worker ON ServiceRequest.worker_email=Worker.email
+                        WHERE client_email="${user_email}" ;`
+                        
+                    con.query(query,(error,result)=>{
+                        if(error)
+                            throw error
+                        user.works=result;
+                        user.user_type=user_type;
+                        res.send({user_data:user})
+                    })
+                })
+            })
+            
+        })
+    })
+    
+}
+module.exports={keyMap,getLandingPageCount,searchWorker,ViewUserProfileInfo}

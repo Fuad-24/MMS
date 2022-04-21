@@ -12,7 +12,7 @@ const {clientSignUpHandler,getClients,getClientInfo,updateClient,uploadClientIma
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService,getServices}=require('./src/workService_Handler')
 const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}=require('./src/serviceRequest_Handler')
-const {getLandingPageCount,searchWorker}=require('./src/common')
+const {getLandingPageCount,searchWorker,ViewUserProfileInfo}=require('./src/common')
 
 const storage=multer.diskStorage({
   destination:(req,file,cb)=>{
@@ -85,6 +85,7 @@ app.put('/servicerequest',(req,res)=>updateServiceRequestStartTime(res,req.body)
 app.get('/login',(req,res)=>Login(res,req.query.email,req.query.password))
 app.get('/searchworker',(req,res)=>searchWorker(res,req.query.latitude,req.query.longitude,req.query.service_name))
 app.get('/landingpagecount',(req,res)=>getLandingPageCount(res))
+app.get('/viewprofile',(req,res)=>ViewUserProfileInfo(res,req.query.user,req.query.viewer,req.query.viewer_type))
 
 
 
