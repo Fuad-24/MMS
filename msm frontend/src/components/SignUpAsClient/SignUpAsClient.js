@@ -5,8 +5,8 @@ import "./style.css"
  const SignUpAsClient=()=>{
     return(
         <div id="container">
-            <TitleBar page="signup"/>
-            <div id="signup">
+            <TitleBar page="signUp"/>
+            <div id="signUp">
                 <div id="signuptxt">Sign Up as Client</div>
                 <input type="name" class="signupinput" id="name" placeholder="Name"/>
                 <input class="signupinput" id="email" placeholder="Email"/>
