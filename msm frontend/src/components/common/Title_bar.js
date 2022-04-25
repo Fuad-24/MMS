@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import './style.css'
 import LogoutMenu from "./LogoutMenu";
 
@@ -42,23 +43,23 @@ const TitleBar=({page,style,up})=>{
                 <div id="mms"><b>mms</b></div>
             </div>
            { page==="landing"?(<div id="buttons">
-                <div id="title_bar_login"><b>Log In</b></div>
-                <div id="title_bar_signup"><b>Sign Up</b></div> 
+                <Link to="/login" id="title_bar_login"><b>Log In</b></Link>
+                <Link to="/signup1" id="title_bar_signup"><b>Sign Up</b></Link> 
             </div>):null}
             
            { page==="clientPage"?(<div id="titlebarclientcontainer">
             <div id="clienttabs" class="tabcontainer">
-                <a href="" class="tab">profile</a>
-                <a href="" class="tab">find workers</a>
-                <a href="" class="tab">my hires</a>
+                <Link to="/profile" class="tab">profile</Link>
+                <Link to="/search" class="tab">find workers</Link>
+                <Link to="/hires" class="tab">my hires</Link>
             </div>
             <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
             { page==="workerPage"?(<div id="titlebarclientcontainer">
             <div id="clienttabs" class="tabcontainer">
-                <a href="" class="tab">profile</a>
-                <a href="" class="tab">my services</a>
-                <a href="" class="tab">my requests</a>
+                <Link to="/profile" class="tab">profile</Link>
+                <Link to="/services" class="tab">my services</Link>
+                <Link to="/requests" class="tab">my requests</Link>
             </div>
             <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
