@@ -8,7 +8,8 @@ import ClientSearchPage from  './components/ClinetSearhPage/ClientSearchPage'
 import Login from './components/Login/Login'
 import SignUpAsWorker from './components/SignUpAsWorker/SignUpAsWorker';
 import UserProfile from './components/UserProfile/UserProfile'
-import ViewUserProfile from './components/UserProfile/ViewUserProfile';
+import ViewSearchedUserProfile from './components/UserProfile/ViewSearchedUserProfile';
+import ViewProfile from './components/UserProfile/ViewProfile';
 import { useState } from 'react';
 import SignUpAsClient from './components/SignUpAsClient/SignUpAsClient';
 import SignUp1 from './components/SignUp_1/SignUp_1';
@@ -26,7 +27,8 @@ function App() {
         <Route path="/login" exact element={<Login/>}/>
         <Route path="/search" exact element={<ClientSearchPage/>}/>
         <Route path="/profile" exact element={<UserProfile/>}/>
-        <Route path="/viewprofile" exact element={<ViewUserProfile user_email={user} searchedLocation={searchedLocation}/>}/>
+        <Route path="/viewsearchedprofile" exact element={<ViewSearchedUserProfile user_email={user} searchedLocation={searchedLocation}/>}/>
+        <Route path="/viewprofile/:email" exact element={<ViewProfile/>}/>
         <Route path="/signup1" exact element={<SignUp1/>}/>
         <Route path="/signup2" exact element={<SignUpAsWorker/>}/>
         <Route path="/signup3" exact element={<SignUpAsClient/>}/>
