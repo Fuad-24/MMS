@@ -4,6 +4,7 @@ import TitleBar from "../common/Title_bar";
 import Notification from "../common/Notification";
 import axios from "axios";
 import "./style.css"
+import {useNavigate } from 'react-router-dom'
 
 const setLocalStorage=(data)=>{
     localStorage.setItem("type", data.type);
@@ -23,6 +24,7 @@ const setLocalStorage=(data)=>{
 
 const Login=()=>{
     const [text,setText]=useState(null)
+    const navigate=useNavigate ();
     
     const loginHandler=()=>{
         const email=document.querySelector("#email").value
@@ -34,7 +36,7 @@ const Login=()=>{
             if(res.data.type==="none")
                 setText("Invalid credentials!");
             else
-                setText("Welcome!")
+                {setText("Welcome!");navigate('/profile');}
         })
     }
 

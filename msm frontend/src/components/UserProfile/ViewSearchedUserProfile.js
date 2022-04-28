@@ -6,7 +6,7 @@ import "./style.css"
 import HireNowModal from "./Modals/HireNowModal";
 import axios from "axios";
 
- const ViewUserProfile=({user_email,searchedLocation})=>{
+ const ViewSearchedUserProfile=({user_email,searchedLocation})=>{
     const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
     const [name,setName]=useState("Tithi Saha")
     const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
@@ -127,4 +127,4 @@ import axios from "axios";
         </div>
     )
  }
- export default ViewUserProfile;
+ export default ViewSearchedUserProfile;

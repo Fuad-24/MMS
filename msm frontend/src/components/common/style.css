@@ -24,6 +24,7 @@
   justify-content: center;
   color: white;
   cursor: pointer;
+  text-decoration: none;
 }
 #title_bar_login {
   font-size: 24;
@@ -35,6 +36,7 @@
   justify-content: center;
   color: #aaa9a9;
   cursor: pointer;
+  text-decoration: none;
 }
 #buttons {
   display: flex;
