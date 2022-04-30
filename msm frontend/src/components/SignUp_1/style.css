@@ -1,7 +1,11 @@
 #signup {
     width: 1000px;
     max-width: 100%;
+<<<<<<< HEAD
     min-height: 400px;
+=======
+    min-height: 480px;
+>>>>>>> 8946b520320d095dacb5fea0bb539065a0916503
     border: 2px solid #ffffff;
     border-radius: 10px;
     display: flex;
@@ -24,7 +28,11 @@
     font-size: 24px;
     font-weight: lighter;
     cursor: pointer;
+<<<<<<< HEAD
     margin-top: 40px;
+=======
+    margin-top: 60px;
+>>>>>>> 8946b520320d095dacb5fea0bb539065a0916503
     
   }
 
