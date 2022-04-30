@@ -7,6 +7,7 @@ import "./style.css"
         <div id="container">
             <TitleBar page="signup"/>
             <div id="signup">
+            
                 <div id="signuptxt">Join as</div>
                 <div>
                     <div className="rectangle1">

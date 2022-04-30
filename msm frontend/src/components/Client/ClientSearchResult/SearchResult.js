@@ -14,27 +14,26 @@ import "./style.css"
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
                     <button id="hirebutton">Hire Now</button> </div>
-                </div><br/>
+                </div>
 
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
                     <button id="hirebutton">Hire Now</button> </div>
-                </div><br/>
+                </div>
 
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
                     <button id="hirebutton">Hire Now</button> </div>
-                </div><br/>
+                </div>
 
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
                     <button id="hirebutton">Hire Now</button> </div>
-                </div><br/>
-                
-                <br/>
+                </div>
+
             </div>
             <Footer/>
         </div>

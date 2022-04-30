@@ -29,9 +29,10 @@
     box-shadow: 1px 3px grey;
     align-items: center;
     align-content: center;
+    margin-bottom: 16px;
   }
 
-  #workerimg {
+  .workerimg {
     width: 75px;
     height: 75px;
     border: 2px solid white;
@@ -46,7 +47,7 @@
     border: 2px solid green;
   }
 
-  #deleteimg {
+  .deleteimg {
     width: 30px;
     height: 30px;
     float: right;
@@ -55,7 +56,7 @@
     margin-right: 22px;
     
   }
-  #deleteimg:hover {
+  .deleteimg:hover {
     border: 2px solid white;
   }
 
@@ -67,41 +68,40 @@
     margin-left: 200px;
   }
 
-  #servicetxt {
+  .servicetxt {
     color: rgb(0, 0, 0);
     font-size: 15px;
     font-weight: 600;
-    padding: 14px;
+   
     text-align: left;
-    margin-left: 1px;
+    
   }
 
-  #statustxt {
+  .statustxt {
     color: rgb(138, 118, 118);
     font-size: 12px;
     font-weight: 400;
-    padding: 14px;
+    padding: 16px;
     text-align: left;
     margin-left: 1px;
 
   }
  
-  #endbutton {
+  .endbutton {
     background-color: green;
     color: white;
     width: 30%;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
-    cursor: pointer;
+    cursor:pointer;
     margin-top: 0px auto;
-    margin-bottom: 1030px;
     margin-right: 12px;
     padding: 8px;
     float: right;
   }
   
-  #endbutton:hover {
+  .endbutton:hover {
     background-color: white;
     color: green;
     border: 1px solid green;

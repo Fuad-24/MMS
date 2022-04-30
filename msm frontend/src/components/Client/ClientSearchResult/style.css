@@ -29,6 +29,7 @@
     box-shadow: 1px 3px grey;
     align-items: center;
     align-content: center;
+    margin-bottom: 18px;
   }
 
   #statusrectangle {
@@ -70,9 +71,7 @@
     color: rgb(0, 0, 0);
     font-size: 15px;
     font-weight: 600;
-    padding: 14px;
-    text-align: left;
-    margin-left: 10px;
+    text-align: left;    
   }
  
   #hirebutton {
@@ -84,7 +83,6 @@
     font-weight: bold;
     cursor: pointer;
     margin-top: 0px auto;
-    margin-bottom: 1030px;
     margin-right: 17px;
     padding: 8px;
     float: right;

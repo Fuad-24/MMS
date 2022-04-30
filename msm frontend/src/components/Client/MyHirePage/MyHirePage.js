@@ -10,33 +10,38 @@ import "./style.css"
             <div id="hire">
                 <div id="hiretxt">My Hires</div>
                 <div className="rectangle">
-                <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
-                    <div class="rectxt">Tithi Saha (23)<br/><font id="servicetxt">Painting</font><font id="statustxt">Running</font>
-                    <button id="endbutton">End work</button> </div>
-                </div><br/>
+                <img src="./pics_icons/profilepic.jpg" class="workerimg" onClick={false}/>
+                    <div class="rectxt">Tithi Saha (23)<br/><font class="servicetxt">Painting</font><font class="statustxt">Running</font>
+                    <button class="endbutton">End work</button> </div>
+                </div>
 
                 <div className="rectangle">
-                <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
-                    <div class="rectxt">Tithi Saha (23)<br/><font id="servicetxt">Shopping</font>
-                    <img src="./pics_icons/delete.png" id="deleteimg" onClick={false}/>
-                     </div>
-                </div><br/>
+                <img src="./pics_icons/profilepic.jpg" class="workerimg" onClick={false}/>
+                    <div class="rectxt">Tithi Saha (23)<br/><font class="servicetxt">Painting</font><font class="statustxt">Running</font>
+                    <button class="endbutton">End work</button> </div>
+                </div>
 
                 <div className="rectangle">
-                <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
-                    <div class="rectxt">Tithi Saha (23)<br/><font id="servicetxt">Cleansing</font>
-                    <img src="./pics_icons/delete.png" id="deleteimg" onClick={false}/>
-                     </div>
-                </div><br/>
+                <img src="./pics_icons/profilepic.jpg" class="workerimg" onClick={false}/>
+                    <div class="rectxt">Tithi Saha (23)<br/><font class="servicetxt">Painting</font>
+                    <img src="./pics_icons/delete.png" class="deleteimg" onClick={false}/>
+                    </div>
+                </div>
 
                 <div className="rectangle">
-                <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
-                    <div class="rectxt">Tithi Saha (23)<br/><font id="servicetxt">Cooking</font>
-                    <img src="./pics_icons/delete.png" id="deleteimg" onClick={false}/>
-                     </div>
-                </div><br/>
+                <img src="./pics_icons/profilepic.jpg" class="workerimg" onClick={false}/>
+                    <div class="rectxt">Tithi Saha (23)<br/><font class="servicetxt">Painting</font>
+                    <img src="./pics_icons/delete.png" class="deleteimg" onClick={false}/>
+                    </div>
+                </div>
 
-                <br/>
+                <div className="rectangle">
+                <img src="./pics_icons/profilepic.jpg" class="workerimg" onClick={false}/>
+                    <div class="rectxt">Tithi Saha (23)<br/><font class="servicetxt">Painting</font>
+                    <img src="./pics_icons/delete.png" class="deleteimg" onClick={false}/>
+                    </div>
+                </div>
+
             </div>
             <Footer/>
         </div>
