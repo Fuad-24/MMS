@@ -13,25 +13,25 @@ import "./style.css"
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
-                    <button id="hirebutton">Hire Now</button> </div>
+                    <button class="hirebutton">Hire Now</button> </div>
                 </div>
 
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
-                    <button id="hirebutton">Hire Now</button> </div>
+                    <button class="hirebutton">Hire Now</button> </div>
                 </div>
 
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
-                    <button id="hirebutton">Hire Now</button> </div>
+                    <button class="hirebutton">Hire Now</button> </div>
                 </div>
 
                 <div className="rectangle">
                 <img src="./pics_icons/profilepic.jpg" id="workerimg" onClick={false}/>
                     <div class="rectxt">Tithi Saha (23) <br/><font id="servicetxt">$24.00/hr</font>
-                    <button id="hirebutton">Hire Now</button> </div>
+                    <button class="hirebutton">Hire Now</button> </div>
                 </div>
 
             </div>

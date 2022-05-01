@@ -74,7 +74,7 @@
     text-align: left;    
   }
  
-  #hirebutton {
+  .hirebutton {
     background-color: green;
     color: white;
     width: 30%;
@@ -82,13 +82,13 @@
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 0px auto;
+    margin-top: 10px;
     margin-right: 17px;
     padding: 8px;
     float: right;
   }
   
-  #hirebutton:hover {
+  .hirebutton:hover {
     background-color: white;
     color: green;
     border: 1px solid green;

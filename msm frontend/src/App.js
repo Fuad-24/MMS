@@ -18,8 +18,8 @@ function App() {
         {
         //<LandingPage/>
         //<Login/>
-        //<SignUp1/>
-        <SignUpAsWorker/>
+        <SignUp1/>
+        //<SignUpAsWorker/>
         //<SignUpAsClient/>
         //<ClientSearchPage/>
         //<ClientSearchResult/>
