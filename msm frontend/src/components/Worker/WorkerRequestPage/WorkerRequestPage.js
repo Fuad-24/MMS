@@ -28,7 +28,7 @@ import "./style.css"
         DeclineButtons.forEach(declinebutton => declinebutton.contains(e.target) ? isClickInsideDeclineButton = true:null)
         if(isClickInsideAcceptButton || isClickInsideDeclineButton)
             return;
-        alert("Visiting profile of "+client.name)
+        alert("View profile of "+client.name)
     }
 
     return(
