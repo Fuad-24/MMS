@@ -54,4 +54,3 @@ import "./style.css"
  export default SearchResultt;
 
  
- // <button class="endbutton" onClick={()=>{endWork(worker)}}>End Now</button>
