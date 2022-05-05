@@ -11,6 +11,7 @@ import UserProfile from './components/UserProfile/UserProfile'
 //import ClientHirePage from './components/Client/MyHirePage/MyHirePage';
 import ClientSearchResult from './components/Client/ClientSearchResult/SearchResult';
 import ClientHirePage from './components/Client/ClientHirePage/HirePage';
+import WorkersRequestPage from './components/Worker/WorkerRequestPage/WorkerRequestPage';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         //<SignUpAsClient/>
         //<ClientSearchPage/>
         //<ClientSearchResult/>
-        <ClientHirePage/>
+        //<ClientHirePage/>
+        <WorkersRequestPage/>
         //<UserProfile/>
         }
       </div>
