@@ -34,7 +34,7 @@ import "./style.css"
            return true;
     }
 
-    let whichButtonExist=()=>{
+    let whichButtonOrImageExist=()=>{
         const Button = document.querySelectorAll(".hirebutton");
         const Image = document.querySelectorAll(".deleteimg");
         if(endWorkButtonExist)
