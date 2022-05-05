@@ -4,6 +4,10 @@ import TitleBar from "../../common/Title_bar";
 import "./style.css"
 
  const HirePage=()=>{
+
+    
+
+
     return(
         <div>
             <TitleBar page="clientPage"/>

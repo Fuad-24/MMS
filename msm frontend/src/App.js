@@ -8,8 +8,9 @@ import SignUp1 from './components/SignUp_1/SignUp_1';
 import SignUpAsWorker from './components/SignUpAsWorker/SignUpAsWorker';
 import SignUpAsClient from './components/SignUpAsClient/SignUpAsClient';
 import UserProfile from './components/UserProfile/UserProfile'
-import ClientHirePage from './components/Client/MyHirePage/MyHirePage';
+//import ClientHirePage from './components/Client/MyHirePage/MyHirePage';
 import ClientSearchResult from './components/Client/ClientSearchResult/SearchResult';
+import ClientHirePage from './components/Client/ClientHirePage/HirePage';
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
         //<SignUpAsWorker/>
         //<SignUpAsClient/>
         //<ClientSearchPage/>
-        <ClientSearchResult/>
-        //<ClientHirePage/>
+        //<ClientSearchResult/>
+        <ClientHirePage/>
         //<UserProfile/>
         }
       </div>
