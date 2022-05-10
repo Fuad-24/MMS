@@ -12,6 +12,7 @@ import UserProfile from './components/UserProfile/UserProfile'
 import ClientSearchResult from './components/Client/ClientSearchResult/SearchResult';
 import ClientHirePage from './components/Client/ClientHirePage/HirePage';
 import WorkersRequestPage from './components/Worker/WorkerRequestPage/WorkerRequestPage';
+import WorkersWorkPage from './components/Worker/WorkerWorkPage/WorkerWorkPage';
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
         //<ClientSearchPage/>
         //<ClientSearchResult/>
         //<ClientHirePage/>
-        <WorkersRequestPage/>
+        //<WorkersRequestPage/>
+        <WorkersWorkPage/>
         //<UserProfile/>
         }
       </div>

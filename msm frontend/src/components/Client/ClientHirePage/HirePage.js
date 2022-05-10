@@ -20,27 +20,13 @@ import "./style.css"
     let viewProfile=(e,worker)=>{
         let isClickInsideHireButton = false;
         let isClickOnDeleteImg = false;
-        const Buttons = document.querySelectorAll(".hirebutton");
+        const Buttons = document.querySelectorAll(".endbutton");
         const Images = document.querySelectorAll(".deleteimg");
         Buttons.forEach(button => button.contains(e.target) ? isClickInsideHireButton = true:null)
         Images.forEach(Image => Image.contains(e.target) ? isClickOnDeleteImg = true:null)
         if(isClickInsideHireButton || isClickOnDeleteImg)
             return;
         alert("Visiting profile of "+worker.name)
-    }
-
-    let endWorkButtonExist=(worker)=>{
-        if(worker.service_status === "Running") 
-           return true;
-    }
-
-    let whichButtonOrImageExist=()=>{
-        const Button = document.querySelectorAll(".hirebutton");
-        const Image = document.querySelectorAll(".deleteimg");
-        if(endWorkButtonExist)
-            return Button;
-        else 
-            return Image;    
     }
 
     return(
@@ -55,7 +41,10 @@ import "./style.css"
                             <font class="servicetxt">{worker.service}</font>
                             <font class="statustxt">{worker.service_status}</font>
                         </div>
-                        <img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker)}}/>
+                        {
+                            (worker.service_status) === "Running" ? <button class="endbutton" onClick={()=>{endWork(worker)}}>End Now</button> : <img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker)}}/>
+                        }
+                        
                     </div>
                 )}
             </div>
@@ -66,4 +55,3 @@ import "./style.css"
  export default SearchResultt;
 
  
- // <button class="endbutton" onClick={()=>{endWork(worker)}}>End Now</button>
