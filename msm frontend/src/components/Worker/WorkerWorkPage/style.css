@@ -79,16 +79,24 @@
     border-radius: 10px;
     font-size: 18px;
     font-weight: bold;
-    cursor: pointer;
     padding: 8px;
+    cursor: pointer;
     margin: auto;
     border:1px solid green
   }
-  .runningbutton:hover {
-    background-color: white;
-    color: green;
-    border: 1px solid green;
+  
+  .endedbutton {
+    background-color: rgb(164, 171, 164);
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;
+    cursor: pointer;
+    margin: auto;
+    border:1px solid rgb(164, 171, 164)
   }
+  
 
   .deleteimg {
     width: 30px;

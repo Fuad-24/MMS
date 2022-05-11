@@ -10,22 +10,7 @@ import "./style.css"
         {name:"Tithi", service:"Painting", service_status:"Declined", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"}
         ]
 
-    let endWork=(worker)=>{
-        alert("Service running for "+worker.name)
-    }
-    let deleteWorker=(worker)=>{
-        alert("Delete service for "+worker.name)
-    }
-
     let viewProfile=(e,worker)=>{
-        let isClickInsideHireButton = false;
-        let isClickOnDeleteImg = false;
-        const Buttons = document.querySelectorAll(".runningbutton");
-        const Images = document.querySelectorAll(".deleteimg");
-        Buttons.forEach(button => button.contains(e.target) ? isClickInsideHireButton = true:null)
-        Images.forEach(Image => Image.contains(e.target) ? isClickOnDeleteImg = true:null)
-        if(isClickInsideHireButton || isClickOnDeleteImg)
-            return;
         alert("Visiting profile of "+worker.name)
     }
 
@@ -42,7 +27,7 @@ import "./style.css"
                             
                         </div>
                         {
-                            (worker.service_status) === "Running" ? <button class="runningbutton" onClick={()=>{endWork(worker)}}>Running</button> : <font class="statustxt">{worker.service_status}</font><img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker)}}/>
+                            (worker.service_status) === "Running" ? <button class="runningbutton" >Running</button> :<button class="endedbutton" >Ended</button>
                         }
                         
                     </div>
