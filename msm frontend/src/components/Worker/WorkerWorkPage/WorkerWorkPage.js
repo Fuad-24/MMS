@@ -3,7 +3,7 @@ import Footer from "../../common/footer/Footer";
 import TitleBar from "../../common/Title_bar";
 import "./style.css"
 
- const SearchResultt=()=>{
+ const WorkerWorkPage=()=>{
     let workers=[
         {name:"Tithi Saha", service:"Shopping", service_status:"Running", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
         {name:"Arnob", service:"Shopping", service_status:"Ended", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
@@ -39,10 +39,10 @@ import "./style.css"
                         <img src={worker.profile_pic} class="workerimg" onClick={false}/>
                         <div class="rectxt">{worker.name} <br/>
                             <font class="servicetxt">{worker.service}</font>
-                            <font class="statustxt">{worker.service_status}</font>
+                            
                         </div>
                         {
-                            (worker.service_status) === "Running" ? <button class="runningbutton" onClick={()=>{endWork(worker)}}>Running</button> : <img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker)}}/>
+                            (worker.service_status) === "Running" ? <button class="runningbutton" onClick={()=>{endWork(worker)}}>Running</button> : <font class="statustxt">{worker.service_status}</font><img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker)}}/>
                         }
                         
                     </div>
@@ -52,6 +52,6 @@ import "./style.css"
         </div>
     )
  }
- export default SearchResultt;
+ export default WorkerWorkPage;
 
  
