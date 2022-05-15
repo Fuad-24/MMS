@@ -13,6 +13,7 @@ import ViewProfile from './components/UserProfile/ViewProfile';
 import { useState } from 'react';
 import SignUpAsClient from './components/SignUpAsClient/SignUpAsClient';
 import SignUp1 from './components/SignUp_1/SignUp_1';
+import ResetPassword from './components/ResetPassword/ResetPassword';
 function App() {
   const [user,setUser]=useState("f@gmail.com")
   const [searchedLocation,setSearchedLocation]=useState("PaikPara, B.Baria")
@@ -32,6 +33,7 @@ function App() {
         <Route path="/signup1" exact element={<SignUp1/>}/>
         <Route path="/signup2" exact element={<SignUpAsWorker/>}/>
         <Route path="/signup3" exact element={<SignUpAsClient/>}/>
+        <Route path="/resetpassword" exact element={<ResetPassword/>}/>
           
         </Routes>
       </Router>

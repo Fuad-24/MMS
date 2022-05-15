@@ -22,21 +22,22 @@ const setLocalStorage=(data)=>{
 }
 
 
-const Login=()=>{
+const ResetPassword=()=>{
     const [text,setText]=useState(null)
     const navigate=useNavigate ();
     
-    const loginHandler=()=>{
+    const resetPasswordHandler=()=>{
         const email=document.querySelector("#email").value
         const password=document.querySelector("#password").value
-        axios.get(`http://localhost:3001/login?email=${email}&password=${password}`).then(res=>{
-            console.log(res.data)
-            if(res.data.user)
-                setLocalStorage(res.data)
-            if(res.data.type==="none")
-                setText("Invalid credentials!");
+        const phone_no=document.querySelector("#forgotphnno").value
+        axios.post(`http://localhost:3001/resetpassword?email=${email}&password=${password}&phoneno=${phone_no}`).then(res=>{
+            if(res.data.result.affectedRows>0)
+                {setText("Password Set!");
+                 setTimeout(()=>{navigate('/login')},1000)
+                }
             else
-                {setText("Welcome!");navigate('/profile');}
+                setText("Invalid credentials!");
+                
         })
     }
 
@@ -45,15 +46,15 @@ const Login=()=>{
         <div id="container">
             <TitleBar page="login"/>
             <div id="login">
-                <div id="logintxt">Log in to mms</div>
+                <div id="logintxt">Reset Password</div>
                 <input class="logininput" id="email" placeholder="Email"/>
-                <input type="password" class="logininput" id="password" placeholder="password"/>
-                <div id="loginbutton" onClick={loginHandler}>Log in</div>
-                <div id="forgotpass" onClick={()=>navigate('/resetpassword')}>forgot password?</div>
+                <input class="logininput" id="forgotphnno" placeholder="Phone no."/>
+                <input class="logininput" id="password" placeholder="New Password"/>
+                <div id="loginbutton" onClick={resetPasswordHandler}>Reset</div>
             </div>
             <Notification text={text} setText={setText}/>
             <Footer/>
         </div>
     )
  }
- export default Login;
+ export default ResetPassword;
