@@ -1,3 +1,4 @@
+const { query } = require('express');
 const {con}=require('../sql')
 
 const keyMap=(obj,keys)=>{
@@ -102,4 +103,24 @@ const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type)=>{
     })
     
 }
-module.exports={keyMap,getLandingPageCount,searchWorker,ViewUserProfileInfo}
+const resetPassword=(res,email,phone_no,pass)=>{
+    let query=`UPDATE Worker
+    SET password="${pass}"
+    WHERE email="${email}" AND phone_no="${phone_no}"
+    ;`
+    con.query(query,(error,result)=>{
+        if(error || result.affectedRows>=1)
+            {res.send({error:error,result:result});return}
+        query=`UPDATE Client
+        SET password="${pass}"
+        WHERE email="${email}" AND phone_no="${phone_no}"
+        ;`
+        con.query(query,(error,result)=>{
+            res.send({error:error,result:result})
+            console.log(error)
+        })
+    })
+    
+    
+}
+module.exports={keyMap,getLandingPageCount,searchWorker,ViewUserProfileInfo,resetPassword}

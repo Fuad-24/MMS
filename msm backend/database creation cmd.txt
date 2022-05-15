@@ -1,5 +1,6 @@
 -->ubuntu
 sudo mysql -u root
+mysql -u root -p
 -->ubuntu
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MMS@tithi@fuad@126@24';
