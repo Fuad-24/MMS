@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../common/footer/Footer";
 import TitleBar from "../../common/Title_bar";
 import "./style.css"
+import ReviewModal from "./Modal/ReviewModal";
 
  const SearchResultt=()=>{
-    let workers=[
+    const [workers, setWorkers]=useState([
         {name:"Tithi Saha", service:"Shopping", service_status:"Running", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
         {name:"Arnob", service:"Shopping", service_status:"Waiting", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
         {name:"Tithi", service:"Painting", service_status:"Cancelled", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"}
-        ]
+        ]);
 
     let endWork=(worker)=>{
         alert("End work for "+worker.name)
@@ -16,6 +17,11 @@ import "./style.css"
     let deleteWorker=(worker)=>{
         alert("Delete "+worker.name)
     }
+    
+    const removeWorker=(name)=>{
+        setWorkers(workers.filter(worker=>worker.name!==name))
+    }
+
 
     let viewProfile=(e,worker)=>{
         let isClickInsideHireButton = false;
@@ -28,6 +34,8 @@ import "./style.css"
             return;
         alert("Visiting profile of "+worker.name)
     }
+
+    let showReviewModal=()=>{document.querySelector("#setNameModal").style.display="block"}
 
     return(
         <div>
@@ -42,13 +50,14 @@ import "./style.css"
                             <font class="statustxt">{worker.service_status}</font>
                         </div>
                         {
-                            (worker.service_status) === "Running" ? <button class="endbutton" onClick={()=>{endWork(worker)}}>End Now</button> : <img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker)}}/>
+                            (worker.service_status) === "Running" ? <button class="endbutton" onClick={()=>{endWork(worker);showReviewModal()}}>End Now</button> : <img src="./pics_icons/delete.png" class="deleteimg" onClick={() => {deleteWorker(worker); removeWorker(worker.name)}}/>
                         }
                         
                     </div>
                 )}
             </div>
             <Footer/>
+            <ReviewModal Workers={workers} setWorkers={setWorkers}/>
         </div>
     )
  }

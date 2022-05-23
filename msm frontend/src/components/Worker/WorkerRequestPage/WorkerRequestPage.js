@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../common/footer/Footer";
 import TitleBar from "../../common/Title_bar";
 import "./style.css"
 
- const SearchResultt=()=>{
-    let clients=[
+ const WorkerRequestPage=()=>{
+    const [clients, setClients]=useState([
         {name:"Tithi Saha", service:"Shopping", service_status:"Running", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
         {name:"Arnob", service:"Shopping", service_status:"Waiting", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
         {name:"Tithi", service:"Painting", service_status:"Cancelled", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"}
-        ]
+        ]);
 
     let accept=(client)=>{
         alert("Accept work for "+client.name)
     }
     let decline=(client)=>{
         alert("Decline work for "+client.name)
+    }
+
+    const removeAfterAcceptOrDecline=(name)=>{
+        setClients(clients.filter(client=>client.name!==name))
     }
     
 
@@ -42,8 +46,8 @@ import "./style.css"
                         <div class="rectxt">{client.name} <br/>
                             <font class="servicetxt">{client.service}</font>
                         </div>
-                        <button class="acceptbutton" onClick={()=>{accept(client)}}>Accept</button>
-                        <button class="declinebutton" onClick={()=>{decline(client)}}>Decline</button>
+                        <button class="acceptbutton" onClick={()=>{accept(client); removeAfterAcceptOrDecline(client.name)}}>Accept</button>
+                        <button class="declinebutton" onClick={()=>{decline(client); removeAfterAcceptOrDecline(client.name)}}>Decline</button>
                     </div>
                 )}
             </div>
@@ -51,6 +55,6 @@ import "./style.css"
         </div>
     )
  }
- export default SearchResultt;
+ export default WorkerRequestPage;
 
  
