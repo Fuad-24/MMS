@@ -25,8 +25,8 @@ function App() {
         //<SignUpAsClient/>
         //<ClientSearchPage/>
         //<ClientSearchResult/>
-        //<ClientHirePage/>
-        <WorkersRequestPage/>
+        <ClientHirePage/>
+        //<WorkersRequestPage/>
         //<WorkersWorkPage/>
         //<UserProfile/>
         }

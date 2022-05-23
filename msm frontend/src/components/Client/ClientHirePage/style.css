@@ -9,11 +9,11 @@
     min-height: 70vh;
   }
 
-  #hiretxt {
+  #clientshiretxt {
     font-size: 36px;
     font-weight: bold;
     color: rgb(186, 184, 181);
-    margin:auto;
+    margin-top: 16px;
     margin-bottom: 16px;
   }
 

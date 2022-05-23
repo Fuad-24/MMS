@@ -9,15 +9,13 @@
     min-height: 70vh;
   }
 
-  #hiretxt {
+  #searchpagehiretxt {
     font-size: 36px;
     font-weight: bold;
     color: rgb(186, 184, 181);
-    margin:auto;
-    margin-bottom: 0px;
+    margin-top: 16px;
   }
   #searchstatetxt{
-    margin:auto;
     margin-bottom: 20px;
     font-size: 24px;
     color: rgb(186, 184, 181);

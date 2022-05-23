@@ -8,8 +8,8 @@ import "./style.css"
      let location="Sylhet"
      let workers=[
          {name:"Tithi Saha",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"},
-         {name:"Arnob",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"},
-         {name:"Tithi",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"}
+         {name:"Tithi Saha",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"},
+         {name:"Tithi Saha",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"}
         ]
 
     let hire=(worker)=>{
@@ -27,7 +27,7 @@ import "./style.css"
         <div>
             <TitleBar page="clientPage"/>
             <div id="hire">
-                <div id="hiretxt">Search Results</div>
+                <div id="searchpagehiretxt">Search Results</div>
                 <div id="searchstatetxt">{service} in {location}</div>
                 {workers.map(worker=>
                     <div className="rectangle" onClick={(e)=>{viewProfile(e,worker)}}>
