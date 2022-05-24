@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './style.css'
 
 
 
 const LogoutMenu=({setMenuVis})=>{
-    
+
+    const naviagte=useNavigate()
     const [active_text,setActiveText]=useState("Active");
     let Active=()=>{
         if(active_text==="Active")
@@ -13,7 +15,9 @@ const LogoutMenu=({setMenuVis})=>{
             setActiveText("Active")
     }
     let Logout=()=>{
+        localStorage.clear();
         setMenuVis(false);
+        naviagte('/')
     }
 
 

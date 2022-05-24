@@ -1,5 +1,4 @@
 const {con}=require('../sql')
-
 const clientSignUpHandler=({payload,res})=>{
     const {email,name,password}=payload
     var query=`INSERT INTO Client(name,email,password) VALUES("${name}","${email}","${password}");`
@@ -56,5 +55,51 @@ const updateClient=(res,email,payload)=>{
         })
     })
 }
+const uploadClientImage=(res,email,image)=>{
+    let query=`UPDATE Client
+    SET profile_pic="${image.path}"
+    WHERE email="${email}";
+    `
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error
+        res.send({
+            error:error,
+            result:result
+        })
+    })
+    console.log(email) 
+    console.log(image)
+}
+const getClientInfo=(res,email)=>{
+    var query=`SELECT * FROM Client WHERE email="${email}";`
+    var user={}
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error;
+        user.basic_info=result[0];
+        query=`SELECT * FROM Education WHERE email="${email}";`
+        con.query(query,(error,result)=>{
+            if(error)
+                throw error;
+            user.educations=result;
+            query=`SELECT * FROM WorkerService WHERE email="${email}";`
+            con.query(query,(error,result)=>{
+                if(error)
+                    throw error;
+                user.services=result;
+                query=`SELECT name,rating,review,service_name FROM ServiceRequest
+                INNER JOIN Worker ON ServiceRequest.worker_email=Worker.email
+                WHERE client_email="${email}" ;`
+                con.query(query,(error,result)=>{
+                    if(error)
+                        throw error
+                    user.works=result;
+                    res.send({user_data:user})
+                })
+            })
+        })
+    })
+}
 
-module.exports={clientSignUpHandler,getClients,getClient,updateClient}
+module.exports={clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage,getClientInfo}

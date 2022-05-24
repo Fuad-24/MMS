@@ -1,6 +1,7 @@
 #profilediv {
   margin: 16px auto;
   width: 80%;
+  min-height: 68vh;
   padding-bottom: 16px;
 }
 #profilepic {

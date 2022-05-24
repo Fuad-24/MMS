@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import LocationSearchBar from "../../common/LocationSearchBar";
 import './style.css'
@@ -10,8 +11,15 @@ const UserLocationModal=({setLocation})=>{
     const [position,setPosition]=useState(null);
     const save=()=>{
         if(position)
-        setLocation(position);
-        hideSetLocationModal();
+            axios.post("http://localhost:3001/updateworker",{
+                email:localStorage.getItem("email"),
+                location_name:position.location,
+                latitude:position.latitude,
+                longitude:position.longitude
+            }).then(res=>{
+                setLocation(position);
+                hideSetLocationModal();
+            })
     }
     return(
     <div class="ModalBody" id="setLocationModal">

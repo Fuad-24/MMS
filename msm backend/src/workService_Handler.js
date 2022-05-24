@@ -47,5 +47,15 @@ const deletWorkerService=(res,email,service_name)=>{
         
     })
 }
+const getServices=(res)=>{
+    var query=`SELECT * FROM Service;`
+    con.query(query,(error,result)=>{
+        if(error)
+            console.log(error)
+        else
+            //console.log(result)
+        res.send({result:result,error:error})
+    })
+}
 
-module.exports={createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService}
+module.exports={createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService,getServices}
