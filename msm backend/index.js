@@ -7,6 +7,7 @@ const sql = require('./sql')
 const multer=require('multer')
 
 const {Login}=require('./src/loging_Handler')
+const {SignUp}=require('./src/signUpHandler')
 const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker,uploadWorkerImage}=require('./src/worker_Handler')
 const {clientSignUpHandler,getClients,getClientInfo,updateClient,uploadClientImage}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
@@ -83,6 +84,7 @@ app.put('/servicerequest',(req,res)=>updateServiceRequestStartTime(res,req.body)
 
 
 app.get('/login',(req,res)=>Login(res,req.query.email,req.query.password))
+app.post('/signup',(req,res)=>SignUp(res,req.query.name,req.query.email,req.query.password,req.query.type))
 app.post('/resetpassword',(req,res)=>resetPassword(res,req.query.email,req.query.phoneno,req.query.password))
 app.get('/searchworker',(req,res)=>searchWorker(res,req.query.latitude,req.query.longitude,req.query.service_name))
 app.get('/landingpagecount',(req,res)=>getLandingPageCount(res))
