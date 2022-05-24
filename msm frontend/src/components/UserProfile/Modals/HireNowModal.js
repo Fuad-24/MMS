@@ -31,7 +31,7 @@ const HireNowModal=({services,searchedLocation,user_email})=>{
     <div class="ModalBody" id="hireNowModal">
     <div class="ModalContainer" id="hireModalContainer" style={{margin:"20vh auto"}}>
         <div class="ModalCloseContaier">
-            <img class ="ModalCloseButton" src="./pics_icons/cancel.png" onClick={hideHireModal}/>
+            <img class ="ModalCloseButton" src={process.env.PUBLIC_URL+"/pics_icons/cancel.png"} onClick={hideHireModal}/>
         </div>
         <div>
             {services.map(service=>(

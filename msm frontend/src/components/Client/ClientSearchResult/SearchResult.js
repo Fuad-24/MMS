@@ -1,16 +1,21 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../common/footer/Footer";
 import TitleBar from "../../common/Title_bar";
 import "./style.css"
 
  const SearchResult=()=>{
-     let service="Shopping"
-     let location="Sylhet"
-     let workers=[
-         {name:"Tithi Saha",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"},
-         {name:"Tithi Saha",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"},
-         {name:"Tithi Saha",charge:24,profile_pic:"./pics_icons/profilepic.jpg",email:"tithi@gmailcom"}
-        ]
+    const navigate=useNavigate()
+    const {longitude,latitude,service,location}=useParams();
+    const [workers,setWorkers]=useState([])
+     useEffect(()=>{
+        axios.get(`http://localhost:3001/searchworker?longitude=${longitude}&latitude=${latitude}&service_name=${service}`).then(res=>{
+                console.log(res.data)
+                setWorkers(res.data)
+            })
+     },[])
+     
 
     let hire=(worker)=>{
         alert("Hiring "+worker.name)
@@ -21,7 +26,7 @@ import "./style.css"
         Buttons.forEach(button=>button.contains(e.target)?isClickInsideHireButton=true:null)
         if(isClickInsideHireButton)
             return;
-        alert("Visiting profile of "+worker.name)
+        navigate(`/viewsearchedprofile/${worker.email}/${location}`)
     }
     return(
         <div>
@@ -31,10 +36,13 @@ import "./style.css"
                 <div id="searchstatetxt">{service} in {location}</div>
                 {workers.map(worker=>
                     <div className="rectangle" onClick={(e)=>{viewProfile(e,worker)}}>
-                        <img src={worker.profile_pic} class="workerimg" onClick={false}/>
+                        <img src={`http://localhost:3001/${worker.profile_pic}`} onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src=process.env.PUBLIC_URL+"/pics_icons/alter.png";
+                        }} class="workerimg" onClick={false}/>
                         <div class="rectxt">{worker.name} <br/><font id="servicetxt">{worker.charge}TK/hr</font>
                          </div>
-                         <button class="hirebutton" onClick={()=>{hire(worker)}}>Hire Now</button>
+                         <button class="hirebutton" style={{visibility:"hidden"}}  onClick={()=>{hire(worker)}}>Hire Now</button>
                     </div>
                 )}
             </div>

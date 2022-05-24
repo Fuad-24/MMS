@@ -13,9 +13,7 @@ import ViewSearchedUserProfile from './components/UserProfile/ViewSearchedUserPr
 import ViewProfile from './components/UserProfile/ViewProfile';
 import { useState } from 'react';
 import SignUpAsClient from './components/SignUpAsClient/SignUpAsClient';
-import SignUp1 from './components/SignUp_1/SignUp_1';
 import ResetPassword from './components/ResetPassword/ResetPassword';
-import UserProfile from './components/UserProfile/UserProfile';
 import ClientSearchResult from './components/Client/ClientSearchResult/SearchResult';
 import ClientHirePage from './components/Client/ClientHirePage/HirePage';
 import WorkersRequestPage from './components/Worker/WorkerRequestPage/WorkerRequestPage';
@@ -34,12 +32,13 @@ function App() {
         <Route path="/login" exact element={<Login/>}/>
         <Route path="/search" exact element={<ClientSearchPage/>}/>
         <Route path="/profile" exact element={<UserProfile/>}/>
-        <Route path="/viewsearchedprofile" exact element={<ViewSearchedUserProfile user_email={user} searchedLocation={searchedLocation}/>}/>
+        <Route path="/viewsearchedprofile/:user_email/:searchedLocation" exact element={<ViewSearchedUserProfile user_email={user} searchedLocation={searchedLocation}/>}/>
         <Route path="/viewprofile/:email" exact element={<ViewProfile/>}/>
         <Route path="/signup1" exact element={<SignUp1/>}/>
         <Route path="/signup2" exact element={<SignUpAsWorker/>}/>
         <Route path="/signup3" exact element={<SignUpAsClient/>}/>
         <Route path="/resetpassword" exact element={<ResetPassword/>}/>
+        <Route path="/searched/:latitude/:longitude/:service/:location" exact element={<ClientSearchResult/>}/>
           
         </Routes>
       </Router>

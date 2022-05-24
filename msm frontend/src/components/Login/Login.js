@@ -13,7 +13,7 @@ const setLocalStorage=(data)=>{
     if(data.user.profile_pic)
         localStorage.setItem("profile_pic","http://localhost:3001/"+data.user.profile_pic);
     else
-        localStorage.setItem("profile_pic","./pics_icons/alter.png")
+        localStorage.setItem("profile_pic",process.env.PUBLIC_URL+"/pics_icons/alter.png")
     localStorage.setItem("phone_no", data.user.phone_no);
     localStorage.setItem("active_status", data.user.active_status);
     localStorage.setItem("location_name", data.user.location_name);

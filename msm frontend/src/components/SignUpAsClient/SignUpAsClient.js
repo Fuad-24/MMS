@@ -1,8 +1,31 @@
 import React from "react";
+import { useState } from "react";
 import Footer from "../common/footer/Footer";
 import TitleBar from "../common/Title_bar";
+import Notification from "../common/Notification";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css"
+import axios from "axios";
  const SignUpAsClient=()=>{
+    const [text,setText]=useState(null)
+    const navigate=useNavigate()
+     const signUp=()=>{
+         const name=document.querySelector("#name").value
+         const email=document.querySelector("#email").value
+         const password=document.querySelector("#password").value
+         if(!name || !email || !password)
+            {setText("All fields must be filled!")
+            return}
+        axios.post(`http://localhost:3001/signup?email=${email}&password=${password}&name=${name}&type=Client`).then(res=>{
+            setText(res.data.stat)
+            if(res.data.stat==="Account created!")
+            {
+                navigate("/login")
+            }
+        })
+        
+         
+     }
     return(
         <div id="container">
             <TitleBar page="signUp"/>
@@ -11,10 +34,11 @@ import "./style.css"
                 <input type="name" class="signupinput" id="name" placeholder="Name"/>
                 <input class="signupinput" id="email" placeholder="Email"/>
                 <input type="password" class="signupinput" id="password" placeholder="password"/>
-                <div id="signupbutton">Sign Up</div>
-                <div id="alreadyhaveaccount">Already have an account?<font id="logIn">Log In</font></div>
+                <div id="signupbutton" onClick={signUp}>Sign Up</div>
+                <div id="alreadyhaveaccount">Already have an account?<Link to="/login"><font id="logIn">Log In</font></Link></div>
                 </div>
             <Footer/>
+            <Notification text={text} setText={setText}/>
         </div>
     )
  }

@@ -5,39 +5,23 @@ import Rating from "./Rating";
 import "./style.css"
 import HireNowModal from "./Modals/HireNowModal";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
- const ViewSearchedUserProfile=({user_email,searchedLocation})=>{
-    const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
-    const [name,setName]=useState("Tithi Saha")
+ const ViewSearchedUserProfile=()=>{
+    const {user_email,searchedLocation}=useParams()
+    const [profilepic,setProfilePic]=useState(process.env.PUBLIC_URL+"/pics_icons/alter.png")
+    const [name,setName]=useState("Loading...")
     const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
-    const [phoneno,setPhoneNo]=useState("01751327692")
-    const [Educations,setEducations]=useState([{institute:"Notre Dame College, Dhaka",
-                    starting_year:"2018",
-                    ending_year:"2022",
-                    degree:"HSC",id:1
-                    },
-                    {institute:"Shajalal University of Science And Technology,Sylhet",
-                    starting_year:"2018",
-                    ending_year:"2022",
-                    degree:"BSC",id:2
-                    }
-                ]);
-    const [Services,setServices]=useState([
-        {"service_name":"Shopping","charge":"24 Tk/hr","id":1},
-        {"service_name":"Teaching","charge":"200 Tk/hr","id":2},
-        {"service_name":"cooking","charge":"200 Tk/hr","id":3}
-    ])
+    const [phoneno,setPhoneNo]=useState("Loading..")
+    const [Educations,setEducations]=useState([]);
+    const [Services,setServices]=useState([])
 
-    const [works,setWorks]=useState([
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"}
-    ])
+    const [works,setWorks]=useState([ ])
     const [type,setType]=useState(localStorage.getItem("type"))
 
     let showHireNowModal=()=>{document.querySelector("#hireNowModal").style.display="block";}
     useEffect(()=>{
+        console.log(user_email+" "+searchedLocation)
         axios.get(`http://localhost:3001/viewprofile?user=${user_email}&viewer=${localStorage.getItem("email")}&viewer_type=${localStorage.getItem("type")}`).then(res=>{
             const data=res.data.user_data;
             setEducations(data.educations)
@@ -49,7 +33,7 @@ import axios from "axios";
             if(data.basic_info.profile_pic)
                 setProfilePic("http://localhost:3001/"+data.basic_info.profile_pic);
             else
-                setProfilePic('./pics_icons/alter.png')
+                setProfilePic(process.env.PUBLIC_URL+'/pics_icons/alter.png')
             setType(data.user_type)
             console.log(data)
         })
@@ -57,7 +41,7 @@ import axios from "axios";
     
     return(
         <div id="container">
-            <TitleBar page={type==="client"?"clientPage":"workerPage"}/>
+            <TitleBar page={"clientPage"}/>
             <div id="profilediv">
                 <div id="basicinfo" class="userinfo">
                     <div id="profilepicdiv">
@@ -69,13 +53,13 @@ import axios from "axios";
                         </div>
                         
                         {type==="worker"?<div id="Profilelocation">
-                            <img id="locaionicon" src="./pics_icons/location.png"/>
+                            <img id="locaionicon" src={process.env.PUBLIC_URL+"/pics_icons/location.png"}/>
                             {location.location}
                         </div>:null}
                         
                         <div id="phoneno">
-                            <img id="phoneicon" src="./pics_icons/phone-callg.png"/>
-                            {phoneno?phoneno:<font color="#a9a9a9">##########</font>}
+                            <img id="phoneicon" src={process.env.PUBLIC_URL+"/pics_icons/phone-callg.png"}/>
+                            {false?phoneno:<font color="#a9a9a9">##########</font>}
                         </div>
                     </div>
                     <div id="buttondiv">
