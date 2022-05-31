@@ -37,7 +37,8 @@ function App() {
         <Route path="/signup1" exact element={<SignUp1/>}/>
         <Route path="/signup2" exact element={<SignUpAsWorker/>}/>
         <Route path="/signup3" exact element={<SignUpAsClient/>}/>
-        <Route path="/resetpassword" exact element={<ResetPassword/>}/>
+        <Route path="/resetpassword" exact element={<ResetPassword/>}/>\
+        <Route path="/hires" exact element={<ClientHirePage/>}/>
         <Route path="/searched/:latitude/:longitude/:service/:location" exact element={<ClientSearchResult/>}/>
           
         </Routes>
