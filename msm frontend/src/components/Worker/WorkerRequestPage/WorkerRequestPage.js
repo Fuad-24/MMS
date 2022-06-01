@@ -37,7 +37,7 @@ import "./style.css"
 
     return(
         <div>
-            <TitleBar page="clientPage"/>
+            <TitleBar page="workerPage"/>
             <div id="hire">
                 <div id="hiretxt">My Requests</div>
                 {clients.map(client=>

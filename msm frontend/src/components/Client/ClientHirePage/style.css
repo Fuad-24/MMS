@@ -17,7 +17,7 @@
     margin-bottom: 16px;
   }
 
-  .rectangle {
+  .hirerectangle {
     display: flex;
     width: 450px;
     height: 100px;
@@ -33,14 +33,13 @@
     cursor: pointer;
   }
 
-  .workerimg {
+  .hireworkerimg {
     width: 75px;
     height: 75px;
     border: 2px solid white;
     border-radius: 100px;
     float: left;
     cursor: pointer;
-    margin: auto;
     
   }
   .rectangle:hover{
@@ -90,13 +89,14 @@
     border: 1px solid green;
   }
 
-  .deleteimg {
+  .workerdeleteimg {
     width: 30px;
     height: 30px;
     float: right;
     cursor: pointer;
     padding: 8px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: 16px;
     
   }
   .deleteimg:hover {

@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
  const ViewProfile=()=>{
-    const {email}=useParams();
+    const {email,status}=useParams();
     const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
     const [name,setName]=useState("Tithi Saha")
     const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
@@ -38,7 +38,7 @@ import axios from "axios";
     const [type,setType]=useState(localStorage.getItem("type"))
 
     useEffect(()=>{
-        axios.get(`http://localhost:3001/viewprofile?user=${email}&viewer=${localStorage.getItem("email")}&viewer_type=${localStorage.getItem("type")}`).then(res=>{
+        axios.get(`http://localhost:3001/viewprofile?user=${email}&viewer=${localStorage.getItem("email")}&viewer_type=${localStorage.getItem("type")}&status=${status}`).then(res=>{
             const data=res.data.user_data;
             setEducations(data.educations)
             setServices(data.services)
