@@ -27,6 +27,7 @@ const getServiceRequests=(res,email)=>{
 }
 
 const updateServiceRequest=(res,payload)=>{
+    console.log(payload)
     let query=`SELECT * FROM ServiceRequest WHERE client_email="${payload.client_email}" AND 
     worker_email="${payload.worker_email}" AND start_time="${payload.start_time}" AND
     location="${payload.location}" AND status="${payload.status}" AND 
@@ -86,7 +87,7 @@ const deletServiceRequest=(res,location,status,client_email,worker_email,service
     worker_email="${worker_email}" AND start_time="${start_time}" AND
     location="${location}" AND status="${status}" AND 
     service_name="${service_name}";`
-    
+    console.log(query)
     con.query(query,(error,result)=>{
         if(error)throw error;
         console.log(location+"|"+status+"|"+client_email+"|"+worker_email+"|"+service_name+"|"+start_time)

@@ -9,7 +9,7 @@ const multer=require('multer')
 const {Login}=require('./src/loging_Handler')
 const {SignUp}=require('./src/signUpHandler')
 const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker,uploadWorkerImage}=require('./src/worker_Handler')
-const {clientSignUpHandler,getClients,getClientInfo,updateClient,uploadClientImage}=require('./src/client_Handler')
+const {clientSignUpHandler,getClients,getClientInfo,updateClient,uploadClientImage,getClienstRequests}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService,getServices}=require('./src/workService_Handler')
 const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}=require('./src/serviceRequest_Handler')
@@ -58,6 +58,7 @@ app.post('/workerprofilepic',upload.single('profile_pic'),(req,res)=>uploadWorke
 app.post('/client',(req,res)=>clientSignUpHandler({payload:req.body,res:res}))
 app.get('/clients',(req,res)=>getClients(res))
 app.get('/client',(req,res)=>getClientInfo(res,req.query.email))
+app.get('/clientsrequests',(req,res)=>getClienstRequests(res,req.query.email))
 app.post('/updateclient',(req,res)=>updateClient(res,req.body.email,req.body))
 app.post('/clientprofilepic',upload.single('profile_pic'),(req,res)=>uploadClientImage(res,req.body.email,req.file))
 
@@ -88,7 +89,7 @@ app.post('/signup',(req,res)=>SignUp(res,req.query.name,req.query.email,req.quer
 app.post('/resetpassword',(req,res)=>resetPassword(res,req.query.email,req.query.phoneno,req.query.password))
 app.get('/searchworker',(req,res)=>searchWorker(res,req.query.latitude,req.query.longitude,req.query.service_name))
 app.get('/landingpagecount',(req,res)=>getLandingPageCount(res))
-app.get('/viewprofile',(req,res)=>ViewUserProfileInfo(res,req.query.user,req.query.viewer,req.query.viewer_type))
+app.get('/viewprofile',(req,res)=>ViewUserProfileInfo(res,req.query.user,req.query.viewer,req.query.viewer_type,req.query.status))
 
 
 

@@ -91,7 +91,7 @@ const getClientInfo=(res,email)=>{
                 query=`SELECT name,rating,review,service_name FROM ServiceRequest
                 INNER JOIN Worker ON ServiceRequest.worker_email=Worker.email
                 WHERE client_email="${email}" ;`
-                con.query(query,(error,result)=>{
+                con.query(query ,(error,result)=>{
                     if(error)
                         throw error
                     user.works=result;
@@ -101,5 +101,13 @@ const getClientInfo=(res,email)=>{
         })
     })
 }
+const getClienstRequests=(res,email)=>{
+    query=`SELECT * FROM ServiceRequest JOIN Worker ON worker_email=email WHERE client_email="${email}";`
+    con.query(query,(error,result)=>{
+        if(error)
+            throw error;
+        res.send(result)
+    })
+}
 
-module.exports={clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage,getClientInfo}
+module.exports={clientSignUpHandler,getClients,getClient,updateClient,uploadClientImage,getClientInfo,getClienstRequests}
