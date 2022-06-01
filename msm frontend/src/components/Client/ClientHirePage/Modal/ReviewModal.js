@@ -52,8 +52,8 @@ const ReviewModal=({Worker,Workers,setWorkers})=>{
     }
     return(
     <div class="ModalBody" id="setNameModal">
-    <div class="ModalContainer">
-        <div class="ModalCloseContaier">
+    <div class="ModalContainer" id="hirepagemodal">
+        <div class="ModalCloseContaier" >
             <img class ="ModalCloseButton" src="./pics_icons/cancel.png" onClick={hideReviewModal}/>
         </div>
         <div style={{display:"flex",flexDirection:"column", margin:"auto"}}>

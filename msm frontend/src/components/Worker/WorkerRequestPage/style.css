@@ -1,20 +1,18 @@
-#hire {
+#rqst {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     margin: auto;
     padding: 0px;
     padding-bottom: 16px;
     min-height: 70vh;
   }
 
-  #hiretxt {
+  #rqsttxt {
     font-size: 36px;
     font-weight: bold;
     color: rgb(186, 184, 181);
-    margin:auto;
-    margin-bottom: 16px;
+    margin: 16px;
   }
   
 

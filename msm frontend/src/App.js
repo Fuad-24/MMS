@@ -40,6 +40,7 @@ function App() {
         <Route path="/resetpassword" exact element={<ResetPassword/>}/>\
         <Route path="/hires" exact element={<ClientHirePage/>}/>
         <Route path="/requests" exact element={<WorkersRequestPage/>}/>
+        <Route path="/services" exact element={<WorkersWorkPage/>}/>
         <Route path="/searched/:latitude/:longitude/:service/:location" exact element={<ClientSearchResult/>}/>
           
         </Routes>
