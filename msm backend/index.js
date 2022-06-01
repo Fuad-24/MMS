@@ -12,7 +12,7 @@ const {workerSignUpHandler,getWorkers,getWorkerInfo,updateWorker,uploadWorkerIma
 const {clientSignUpHandler,getClients,getClientInfo,updateClient,uploadClientImage,getClienstRequests}=require('./src/client_Handler')
 const {createEducation,getEducations,updateEducation,deletEducation}=require('./src/education_Handler')
 const {createWorkerService,getWorkerServices,updateWorkerService,deletWorkerService,getServices}=require('./src/workService_Handler')
-const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}=require('./src/serviceRequest_Handler')
+const {createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime,getServiceRequestsForWorker}=require('./src/serviceRequest_Handler')
 const {getLandingPageCount,searchWorker,ViewUserProfileInfo,resetPassword}=require('./src/common')
 
 const storage=multer.diskStorage({
@@ -82,6 +82,7 @@ app.delete('/servicerequest',(req,res)=>deletServiceRequest(
   res,req.query.location,req.query.status,req.query.client_email,
   req.query.worker_email,req.query.service_name,req.query.start_time)) 
 app.put('/servicerequest',(req,res)=>updateServiceRequestStartTime(res,req.body))
+app.get('/servicerequestforworker',(req,res)=>getServiceRequestsForWorker(res,req.query.email))
 
 
 app.get('/login',(req,res)=>Login(res,req.query.email,req.query.password))

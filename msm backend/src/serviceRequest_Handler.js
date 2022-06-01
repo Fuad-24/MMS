@@ -4,15 +4,26 @@ const {con}=require('../sql')
 const createServiceRequest=(res,payload)=>{
     const {location,client_email,worker_email,service_name}=payload
     const status="pending"
-    var query=`INSERT INTO ServiceRequest(location,status,client_email,worker_email,service_name)
-     VALUES("${location}","${status}","${client_email}","${worker_email}","${service_name}");`
+    var query=`SELECT * FROM ServiceRequest
+    WHERE location="${location}" AND status="pending" AND client_email="${client_email}"
+    AND worker_email="${worker_email}" AND service_name="${service_name}";`
     con.query(query,(error,result)=>{
         if(error)
-            console.log(error)
-        else
-            console.log(result)
-        res.send({result:result,error:error})
+         console.log(error)
+        if(result[0])
+            {res.send({error:"duplicatevalue"})
+            return}
+        query=`INSERT INTO ServiceRequest(location,status,client_email,worker_email,service_name)
+        VALUES("${location}","${status}","${client_email}","${worker_email}","${service_name}");`
+        con.query(query,(error,result)=>{
+            if(error)
+                console.log(error)
+            else
+                console.log(result)
+            res.send({result:result,error:error})
+        })
     })
+    
 }
 
 const getServiceRequests=(res,email)=>{
@@ -67,7 +78,7 @@ const updateServiceRequestStartTime=(res,payload)=>{
         let request=result[0];
         request.start_time=payload.start_time
         query=`UPDATE ServiceRequest
-        SET start_time="${request.start_time}",status="Running"
+        SET start_time="${new Date().toString()}",status="Running"
         WHERE client_email="${payload.client_email}" AND 
         worker_email="${payload.worker_email}" AND start_time="N/A" AND
         location="${payload.location}" AND status="${payload.status}" AND 
@@ -96,4 +107,17 @@ const deletServiceRequest=(res,location,status,client_email,worker_email,service
     })
 }
 
-module.exports={createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime}
+const getServiceRequestsForWorker=(res,email)=>{
+    var query=`SELECT * FROM ServiceRequest
+    JOIN Client ON client_email=email
+    WHERE client_email="${email}" OR worker_email="${email}";`
+    con.query(query,(error,result)=>{
+        if(error)
+            console.log(error)
+        else
+            console.log(result)
+        res.send({result:result,error:error})
+    })
+}
+
+module.exports={createServiceRequest,getServiceRequests,updateServiceRequest,deletServiceRequest,updateServiceRequestStartTime,getServiceRequestsForWorker}
