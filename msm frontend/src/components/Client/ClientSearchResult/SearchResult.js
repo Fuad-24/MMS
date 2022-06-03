@@ -12,7 +12,7 @@ import "./style.css"
      useEffect(()=>{
         axios.get(`http://localhost:3001/searchworker?longitude=${longitude}&latitude=${latitude}&service_name=${service}`).then(res=>{
                 console.log(res.data)
-                setWorkers(res.data)
+                setWorkers(res.data.filter(worker=>worker.active_status!==2))
             })
      },[])
      

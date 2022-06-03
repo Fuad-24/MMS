@@ -168,6 +168,7 @@
   width: 40px;
 }
 .description {
+  white-space: pre-line;
   width: fit-content;
   margin-bottom: 8px;
   text-align: left;
