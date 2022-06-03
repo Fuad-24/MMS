@@ -36,6 +36,7 @@ const getWorker=(res,email)=>{
 
 const updateWorker=(res,email,payload)=>{
     let query=`SELECT * FROM Worker WHERE email="${email}";`
+    //console.log(email);
     con.query(query,(error,result)=>{
         if(error)throw error;
         let worker=result[0];
