@@ -124,7 +124,7 @@ import axios from "axios";
                 </div>:null}
                 <div id="workhistorydiv" class="userinfo">
                     <div class="infotitle">
-                        Work History
+                        {type==="worker"?"Work History":"My Hires"}
                     </div>
                     <div id="profileworkhistorylist">
                         {works.map(work=>(

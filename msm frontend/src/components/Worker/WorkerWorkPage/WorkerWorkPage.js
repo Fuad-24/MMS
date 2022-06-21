@@ -29,7 +29,7 @@ import "./style.css"
                 <div id="workersworktxt">My Services</div>
                 {workers.map(worker=>
                     <div className="rectangle" onClick={(e)=>{viewProfile(e,worker)}}>
-                        <img src={"http://localhost:3001/"+worker.profile_pic} class="workerimg" onClick={false}/>
+                        <img src={worker.profile_pic?"http://localhost:3001/"+worker.profile_pic:"./pics_icons/alter.png"} class="workerimg" onClick={false}/>
                         <div class="rectxt">{worker.name} <br/>
                             <font class="servicetxt">{worker.service_name}</font>
                             

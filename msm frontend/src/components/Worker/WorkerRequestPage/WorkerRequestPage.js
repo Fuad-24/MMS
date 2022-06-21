@@ -71,7 +71,7 @@ import "./style.css"
                 <div id="rqsttxt">My Requests</div>
                 {clients.map(client=>
                     <div className="rectangle" onClick={(e)=>{viewProfile(e,client)}}>
-                        <img src={"http://localhost:3001/"+client.profile_pic} class="workerimg" onClick={false}/>
+                        <img src={client.profile_pic?"http://localhost:3001/"+client.profile_pic:'./pics_icons/alter.png'} class="workerimg" onClick={false}/>
                         <div class="rectxt">{client.name} <br/>
                             <font class="servicetxt">{client.service_name}</font>
                         </div>

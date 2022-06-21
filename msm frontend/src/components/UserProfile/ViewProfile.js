@@ -49,7 +49,7 @@ import axios from "axios";
             if(data.basic_info.profile_pic)
                 setProfilePic("http://localhost:3001/"+data.basic_info.profile_pic);
             else
-                setProfilePic('./pics_icons/alter.png')
+                setProfilePic('http://localhost:3000/pics_icons/alter.png')
             setType(data.user_type)
             console.log(data)
         })

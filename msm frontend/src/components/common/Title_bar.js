@@ -47,7 +47,7 @@ const TitleBar=({page,style,up})=>{
                 <Link to="/signup1" id="title_bar_signup"><b>Sign Up</b></Link> 
             </div>):null}
             
-           { page==="clientPage"?(<div id="titlebarclientcontainer">
+           { localStorage.getItem("type")==="client"?(<div id="titlebarclientcontainer">
             <div id="clienttabs" class="tabcontainer">
                 <Link to="/profile" class="tab">profile</Link>
                 <Link to="/search" class="tab">find workers</Link>
@@ -55,7 +55,7 @@ const TitleBar=({page,style,up})=>{
             </div>
             <img src={up?up:localStorage.getItem("profile_pic")} id="titlebarimg" onClick={titleImgClick}/>
             </div>):null}
-            { page==="workerPage"?(<div id="titlebarclientcontainer">
+            { localStorage.getItem("type")==="worker"?(<div id="titlebarclientcontainer">
             <div id="clienttabs" class="tabcontainer">
                 <Link to="/profile" class="tab">profile</Link>
                 <Link to="/services" class="tab">my services</Link>
