@@ -13,33 +13,14 @@ import ServiceModal from "./Modals/ServiceModal";
 import axios from "axios";
 
  const UserProfile=()=>{
-    const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
-    const [name,setName]=useState("Tithi Saha")
-    const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
-    const [phoneno,setPhoneNo]=useState("01751327692")
-    const [Educations,setEducations]=useState([{institute:"Notre Dame College, Dhaka",
-                    starting_year:"2018",
-                    ending_year:"2022",
-                    degree:"HSC",id:1
-                    },
-                    {institute:"Shajalal University of Science And Technology,Sylhet",
-                    starting_year:"2018",
-                    ending_year:"2022",
-                    degree:"BSC",id:2
-                    }
-                ]);
-    const [Services,setServices]=useState([
-        {"service_name":"Shopping","charge":"24 Tk/hr","id":1},
-        {"service_name":"Teaching","charge":"200 Tk/hr","id":2},
-        {"service_name":"cooking","charge":"200 Tk/hr","id":3}
-    ])
+    const [profilepic,setProfilePic]=useState("./pics_icons/alter.png")
+    const [name,setName]=useState("")
+    const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":""})
+    const [phoneno,setPhoneNo]=useState("")
+    const [Educations,setEducations]=useState([]);
+    const [Services,setServices]=useState([])
 
-    const [works,setWorks]=useState([
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"}
-    ])
+    const [works,setWorks]=useState([])
     const [type,setType]=useState(localStorage.getItem("type"))
 
     let showSetNameModal=()=>{document.querySelector("#setNameModal").style.display="block"}

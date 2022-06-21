@@ -7,11 +7,7 @@ import "./style.css"
 
  const WorkerRequestPage=()=>{
     const navigate=useNavigate();
-    const [clients, setClients]=useState([
-        {name:"Tithi Saha", service:"Shopping", service_status:"Running", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
-        {name:"Arnob", service:"Shopping", service_status:"Waiting", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"},
-        {name:"Tithi", service:"Painting", service_status:"Cancelled", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"}
-        ]);
+    const [clients, setClients]=useState([]);
     useEffect(()=>{
         axios.get(`http://localhost:3001/servicerequestforworker?email=${localStorage.getItem("email")}`)
         .then(res=>{

@@ -7,9 +7,7 @@ import "./style.css"
 
  const WorkerWorkPage=()=>{
      const navigate=useNavigate();
-    const [workers,setWorkers]=useState([
-        {name:"Tithi", service:"Painting", service_status:"Declined", profile_pic:"./pics_icons/profilepic.jpg", email:"tithi@gmailcom"}
-        ])
+    const [workers,setWorkers]=useState([])
 
     let viewProfile=(e,worker)=>{
         navigate(`/viewprofile/${worker.email}/${worker.status}`)
