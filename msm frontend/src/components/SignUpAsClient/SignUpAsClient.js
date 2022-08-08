@@ -28,7 +28,7 @@ import axios from "axios";
      }
     return(
         <div id="container">
-            <TitleBar page="signUp"/>
+            <TitleBar page="signup"/>
             <div id="signUp">
                 <div id="signuptxt">Sign Up as Client</div>
                 <input type="name" class="signupinput" id="name" placeholder="Name"/>
