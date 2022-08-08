@@ -1,3 +1,4 @@
+const { query } = require('express');
 const {con}=require('../sql')
 
 const keyMap=(obj,keys)=>{
@@ -43,7 +44,7 @@ const searchWorker=(res,latitude,longitude,service_name)=>{
     })
     
 }
-const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type)=>{
+const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type,status)=>{
     let user_type="client"
     if(viewer_type==="client")
         user_type="worker"
@@ -62,7 +63,7 @@ const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type)=>{
         else
             worker=viewer_email
         query=`SELECT status FROM ServiceRequest
-        WHERE client_email="${client}" AND worker_email="${worker}" AND status="Running";
+        WHERE client_email="${client}" AND worker_email="${worker}" AND (status="Running" OR status="Ended");
         `
         con.query(query,(error,result)=>{
             if(error)
@@ -93,6 +94,8 @@ const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type)=>{
                             throw error
                         user.works=result;
                         user.user_type=user_type;
+                        if(status!=="Running"&&status!=="Ended")
+                            user.basic_info.phone_no=null;
                         res.send({user_data:user})
                     })
                 })
@@ -102,4 +105,24 @@ const ViewUserProfileInfo=(res,user_email,viewer_email,viewer_type)=>{
     })
     
 }
-module.exports={keyMap,getLandingPageCount,searchWorker,ViewUserProfileInfo}
+const resetPassword=(res,email,phone_no,pass)=>{
+    let query=`UPDATE Worker
+    SET password="${pass}"
+    WHERE email="${email}" AND phone_no="${phone_no}"
+    ;`
+    con.query(query,(error,result)=>{
+        if(error || result.affectedRows>=1)
+            {res.send({error:error,result:result});return}
+        query=`UPDATE Client
+        SET password="${pass}"
+        WHERE email="${email}" AND phone_no="${phone_no}"
+        ;`
+        con.query(query,(error,result)=>{
+            res.send({error:error,result:result})
+            console.log(error)
+        })
+    })
+    
+    
+}
+module.exports={keyMap,getLandingPageCount,searchWorker,ViewUserProfileInfo,resetPassword}

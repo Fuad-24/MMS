@@ -7,38 +7,19 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
  const ViewProfile=()=>{
-    const {email}=useParams();
-    const [profilepic,setProfilePic]=useState("./pics_icons/profilepic.jpg")
-    const [name,setName]=useState("Tithi Saha")
-    const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":"Madina Market, Sylhet"})
-    const [phoneno,setPhoneNo]=useState("01751327692")
-    const [Educations,setEducations]=useState([{institute:"Notre Dame College, Dhaka",
-                    starting_year:"2018",
-                    ending_year:"2022",
-                    degree:"HSC",id:1
-                    },
-                    {institute:"Shajalal University of Science And Technology,Sylhet",
-                    starting_year:"2018",
-                    ending_year:"2022",
-                    degree:"BSC",id:2
-                    }
-                ]);
-    const [Services,setServices]=useState([
-        {"service_name":"Shopping","charge":"24 Tk/hr","id":1},
-        {"service_name":"Teaching","charge":"200 Tk/hr","id":2},
-        {"service_name":"cooking","charge":"200 Tk/hr","id":3}
-    ])
+    const {email,status}=useParams();
+    const [profilepic,setProfilePic]=useState("http://localhost:3000/pics_icons/alter.png")
+    const [name,setName]=useState("")
+    const [location,setLocation]=useState({"latitude":100,"longitude":100,"location":""})
+    const [phoneno,setPhoneNo]=useState("")
+    const [Educations,setEducations]=useState([]);
+    const [Services,setServices]=useState([])
 
-    const [works,setWorks]=useState([
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"},
-        {name:"Fuad",worker:"Tithi",rating:"2",review:"Had fun wok with blah blah... .... ...",service_name:"Shopping"}
-    ])
+    const [works,setWorks]=useState([])
     const [type,setType]=useState(localStorage.getItem("type"))
 
     useEffect(()=>{
-        axios.get(`http://localhost:3001/viewprofile?user=${email}&viewer=${localStorage.getItem("email")}&viewer_type=${localStorage.getItem("type")}`).then(res=>{
+        axios.get(`http://localhost:3001/viewprofile?user=${email}&viewer=${localStorage.getItem("email")}&viewer_type=${localStorage.getItem("type")}&status=${status}`).then(res=>{
             const data=res.data.user_data;
             setEducations(data.educations)
             setServices(data.services)
@@ -49,7 +30,7 @@ import axios from "axios";
             if(data.basic_info.profile_pic)
                 setProfilePic("http://localhost:3001/"+data.basic_info.profile_pic);
             else
-                setProfilePic('./pics_icons/alter.png')
+                setProfilePic('http://localhost:3000/pics_icons/alter.png')
             setType(data.user_type)
             console.log(data)
         })

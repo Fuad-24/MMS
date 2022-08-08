@@ -6,19 +6,18 @@ import ServiceSearchBar from "../common/ServiceSearchBar";
 import Notification from "../common/Notification";
 import './style.css';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ClinetSearhPage=()=>{
     const [position,setPosition]=useState(null);
     const [service,setService]=useState(null);
     const [text,setText]=useState(null);
+    const navigate=useNavigate()
     const Search=()=>{
         if(position==null||service==null)
             setText("Location or service invalid");
         else
-            axios.get(`http://localhost:3001/searchworker?longitude=${position.longitude}&latitude=${position.latitude}&service_name=${service}`).then(res=>{
-                console.log(res.data)
-                setText(`found ${res.data.length} workers`);
-            })
+            navigate(`/searched/${position.latitude}/${position.longitude}/${service}/${position.location}`)
         console.log(service)
         console.log(position)
             

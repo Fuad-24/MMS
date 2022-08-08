@@ -8,8 +8,8 @@ const LocationSearchBar=({setPosition,position})=>{
         //console.log(e.target.value);
         //setPosition(null)
         let query=e.target.value;
-        if(query.length%6===1)
-            return;
+        //if(query.length%6===1)
+            //return;
         if(query.length===0)
             setPosition(null);
         axios.get(`http://api.positionstack.com/v1/forward?access_key=e908e8dad7e3e1d2c67cc912fd54ae2b&query=${query}`)

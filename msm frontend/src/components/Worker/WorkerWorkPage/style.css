@@ -1,19 +1,18 @@
-#hire {
+#workerwork {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     margin: auto;
     padding: 0px;
+    padding-top: 16px;
     padding-bottom: 16px;
     min-height: 70vh;
   }
 
-  #hiretxt {
+  #workersworktxt {
     font-size: 36px;
     font-weight: bold;
     color: rgb(186, 184, 181);
-    margin:auto;
     margin-bottom: 16px;
   }
 
