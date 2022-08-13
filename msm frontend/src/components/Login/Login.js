@@ -36,7 +36,7 @@ const Login=()=>{
             if(res.data.type==="none")
                 setText("Invalid credentials!");
             else
-                {setText("Welcome!");navigate('/profile');}
+                {setText("Welcome!"); navigate('/profile');}
         })
     }
 
